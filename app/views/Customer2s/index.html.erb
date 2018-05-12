@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1 align = "center">   <%= session[:customer_type_name] %>   List</h1>
+<div>
+<%= link_to "Create New  #{session[:customer_type_name]}", new_customer2_path, class: "btn btn-primary" %>
+</div>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Last Name</th>
+    <th>First Name</th>
+    <th>Contact Type</th>
+    <th></th>
+    <th></th>
+
+  </tr>
+  </thead>
+
+  <tbody>
+    <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.last_name %></td>
+          <td><%= customer.first_name %></td>
+          <td><%= customer.customer_type.name %></td>
+
+          <td><%= link_to 'Show', customer, :class => "btn btn-warning" %></td>
+          <td><%= link_to 'Edit', edit_customer2_path(customer), :class => "btn btn-warning" %></td>
+          <td><%= link_to 'Delete', customer, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-warning" %></td>
+
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<br>
+
+

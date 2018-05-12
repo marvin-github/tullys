@@ -1,0 +1,129 @@
+<%= form_with(model: invoice, local: true) do |form| %>
+  <% if invoice.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(invoice.errors.count, "error") %> prohibited this invoice from being saved:</h2>
+
+      <ul>
+      <% invoice.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :customer_id %>
+    <%= form.collection_select(:customer_id, Customer.all, :id, :full_name, :include_blank => true) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :canine_id %>
+    <%= form.collection_select(:canine_id, Canine.all, :id, :description, :include_blank => true) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sales_person_1 %>
+    <%= form.collection_select(:sales_person_1_id, SalesPerson.all, :id, :last_name, :include_blank => true) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sales_person_2 %>
+    <%= form.collection_select(:sales_person_2_id, SalesPerson.all, :id, :last_name, :include_blank => true) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :veterinarian_id %>
+    <%= form.collection_select(:veterinarian_id, Veterinarian.all, :id, :company_name, :include_blank => true) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :invoice_status_id %>
+    <%= form.collection_select(:invoice_status_id, InvoiceStatus.all, :id, :name, :include_blank => true) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :purchase_date %>
+    <%= form.date_select :purchase_date, id: :invoice_purchase_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sale_price %>
+    <%= form.text_field :sale_price, id: :invoice_sale_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sale_discount %>
+    <%= form.text_field :sale_discount, id: :invoice_sale_discount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sale_discount_reason %>
+    <%= form.text_field :sale_discount_reason, id: :invoice_sale_discount_reason %>
+  </div>
+
+  <div class="field">
+    <%= form.label :paper_deliver_method %>
+    <%= form.text_field :paper_deliver_method, id: :invoice_paper_deliver_method %>
+  </div>
+
+  <div class="field">
+    <%= form.label :credit_card_last_4 %>
+    <%= form.text_field :credit_card_last_4, id: :invoice_credit_card_last_4 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :payment_method_1 %>
+    <%= form.collection_select(:payment_method_id, PaymentMethod.all, :id, :name, :include_blank => true) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :payment_method_2 %>
+    <%= form.collection_select(:payment_method_id, PaymentMethod.all, :id, :name, :include_blank => true) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :payment_amount_1 %>
+    <%= form.text_field :payment_amount_1, id: :invoice_payment_amount_1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :payment_amount_2 %>
+    <%= form.text_field :payment_amount_2, id: :invoice_payment_amount_2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :payment_date %>
+    <%= form.date_select :payment_date, id: :invoice_payment_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :commission_percent %>
+    <%= form.text_field :commission_percent, id: :invoice_commission_percent %>
+  </div>
+
+  <div class="field">
+    <%= form.label :return_date %>
+    <%= form.date_select :return_date, id: :invoice_return_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :refund_amount %>
+    <%= form.text_field :refund_amount, id: :invoice_refund_amount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :refund_method %>
+    <%= form.text_field :refund_method, id: :invoice_refund_method %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sale_completed %>
+    <%= form.text_field :sale_completed, id: :invoice_sale_completed %>
+  </div>
+
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

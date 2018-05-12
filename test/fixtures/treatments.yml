@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  canine: one
+  treatment_type: one
+  treatment_date: 2018-05-07
+
+two:
+  canine: two
+  treatment_type: two
+  treatment_date: 2018-05-07

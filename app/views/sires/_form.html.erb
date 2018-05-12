@@ -1,0 +1,38 @@
+<%= form_with(model: sire, local: true) do |form| %>
+  <% if sire.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sire.errors.count, "error") %> prohibited this sire from being saved:</h2>
+
+      <ul>
+      <% sire.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :sire_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :breed_id %>
+    <%= form.collection_select(:breed_id, Breed.all, :id, :name, :include_blank => true) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :breeder_id %>
+    <%= form.collection_select(:breeder_id, Breeder.all, :id, :company_name, :include_blank => true) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :registration_number %>
+    <%= form.text_field :registration_number, id: :sire_registration_number %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

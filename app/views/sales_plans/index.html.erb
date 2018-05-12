@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Sales Plans</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Start date</th>
+      <th>End date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sales_plans.each do |sales_plan| %>
+      <tr>
+        <td><%= sales_plan.name %></td>
+        <td><%= sales_plan.start_date %></td>
+        <td><%= sales_plan.end_date %></td>
+        <td><%= link_to 'Show', sales_plan %></td>
+        <td><%= link_to 'Edit', edit_sales_plan_path(sales_plan) %></td>
+        <td><%= link_to 'Destroy', sales_plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sales Plan', new_sales_plan_path %>

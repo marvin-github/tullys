@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @dam.name %>
+</p>
+
+<p>
+  <strong>Breed:</strong>
+  <%= @dam.breed.name %>
+</p>
+
+<p>
+  <strong>Breeder:</strong>
+  <%= @dam.breeder.company_name %>
+</p>
+
+<p>
+  <strong>Registration number:</strong>
+  <%= @dam.registration_number %>
+</p>
+
+
+<%= link_to 'Edit', edit_dam_path(@dam) %> |
+<%= link_to 'Back', dams_path %>

@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @veterinarian.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @veterinarian.last_name %>
+</p>
+
+<p>
+  <strong>Company name:</strong>
+  <%= @veterinarian.company_name %>
+</p>
+
+<p>
+  <strong>Address1:</strong>
+  <%= @veterinarian.address1 %>
+</p>
+
+<p>
+  <strong>Address2:</strong>
+  <%= @veterinarian.address2 %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @veterinarian.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @veterinarian.state %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @veterinarian.zip %>
+</p>
+
+<p>
+  <strong>Mobile phone:</strong>
+  <%= @veterinarian.mobile_phone %>
+</p>
+
+<p>
+  <strong>Home phone:</strong>
+  <%= @veterinarian.home_phone %>
+</p>
+
+<p>
+  <strong>Fax:</strong>
+  <%= @veterinarian.fax %>
+</p>
+
+<p>
+  <strong>Business hours:</strong>
+  <%= @veterinarian.business_hours %>
+</p>
+
+<%= link_to 'Edit', edit_veterinarian_path(@veterinarian) %> |
+<%= link_to 'Back', veterinarians_path %>

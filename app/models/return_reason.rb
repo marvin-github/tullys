@@ -1,0 +1,2 @@
+class ReturnReason < ApplicationRecord
+end

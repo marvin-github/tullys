@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @broker.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @broker.last_name %>
+</p>
+
+<p>
+  <strong>Company name:</strong>
+  <%= @broker.company_name %>
+</p>
+
+<p>
+  <strong>Address1:</strong>
+  <%= @broker.address1 %>
+</p>
+
+<p>
+  <strong>Address2:</strong>
+  <%= @broker.address2 %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @broker.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @broker.state %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @broker.zip %>
+</p>
+
+<p>
+  <strong>Mobile phone:</strong>
+  <%= @broker.mobile_phone %>
+</p>
+
+<p>
+  <strong>Home phone:</strong>
+  <%= @broker.home_phone %>
+</p>
+
+<p>
+  <strong>Fax:</strong>
+  <%= @broker.fax %>
+</p>
+
+<%= link_to 'Edit', edit_broker_path(@broker) %> |
+<%= link_to 'Back', brokers_path %>

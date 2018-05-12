@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Weight Categories</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Require sale weight</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @weight_categories.each do |weight_category| %>
+      <tr>
+        <td><%= weight_category.name %></td>
+        <td><%= weight_category.description %></td>
+        <td><%= weight_category.require_sale_weight %></td>
+        <td><%= link_to 'Show', weight_category %></td>
+        <td><%= link_to 'Edit', edit_weight_category_path(weight_category) %></td>
+        <td><%= link_to 'Destroy', weight_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Weight Category', new_weight_category_path %>

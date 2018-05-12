@@ -1,0 +1,2 @@
+module WeightCategoriesHelper
+end

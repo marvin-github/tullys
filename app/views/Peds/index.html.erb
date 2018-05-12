@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1 align = "center">Pedigrees List</h1>
+<%= link_to 'New Pedigree', new_ped_path, class: "btn btn-primary" %>
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Breed</th>
+      <th>Gender</th>
+      <th></th>
+      <th></th>
+    </tr>
+    </thead>
+
+  <tbody>
+    <% @pedigrees.each do |pedigree| %>
+      <tr>
+        <td><%= pedigree.name %></td>
+        <td><%= pedigree.breed %></td>
+        <td><%= pedigree.gender %></td>
+
+        <td><%= link_to 'Show', pedigree, :class => "btn btn-warning" %></td>
+        <td><%= link_to 'Edit', edit_ped_path(pedigree), :class => "btn btn-warning" %></td>
+        <td><%= link_to 'Destroy', pedigree, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-warning" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

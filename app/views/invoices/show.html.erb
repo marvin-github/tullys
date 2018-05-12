@@ -1,0 +1,116 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @invoice.customer.last_name %>
+</p>
+
+<p>
+  <strong>Canine:</strong>
+  <%= @invoice.canine.description %>
+</p>
+
+<p>
+  <strong>Veterinarian:</strong>
+  <%= @invoice.veterinarian.company_name %>
+</p>
+
+<p>
+  <strong>Invoice status:</strong>
+  <%= @invoice.invoice_status.name %>
+</p>
+
+<p>
+  <strong>Purchase date:</strong>
+  <%= @invoice.purchase_date %>
+</p>
+
+<p>
+  <strong>Sale price:</strong>
+  <%= @invoice.sale_price %>
+</p>
+
+<p>
+  <strong>Sale discount:</strong>
+  <%= @invoice.sale_discount %>
+</p>
+
+<p>
+  <strong>Sale discount reason:</strong>
+  <%= @invoice.sale_discount_reason %>
+</p>
+
+<p>
+  <strong>Paper deliver method:</strong>
+  <%= @invoice.paper_deliver_method %>
+</p>
+
+<p>
+  <strong>Credit card last 4:</strong>
+  <%= @invoice.credit_card_last_4 %>
+</p>
+
+<p>
+  <strong>Payment method 1:</strong>
+  <%= @invoice.payment_method_1 %>
+</p>
+
+<p>
+  <strong>Payment method 2:</strong>
+  <%= @invoice.payment_method_2 %>
+</p>
+
+<p>
+  <strong>Payment amount 1:</strong>
+  <%= @invoice.payment_amount_1 %>
+</p>
+
+<p>
+  <strong>Payment amount 2:</strong>
+  <%= @invoice.payment_amount_2 %>
+</p>
+
+<p>
+  <strong>Payment date:</strong>
+  <%= @invoice.payment_date %>
+</p>
+
+<p>
+  <strong>Sales person 1:</strong>
+  <%= @invoice.sales_person_1 %>
+</p>
+
+<p>
+  <strong>Sales person 2:</strong>
+  <%= @invoice.sales_person_2 %>
+</p>
+
+<p>
+  <strong>Commission percent:</strong>
+  <%= @invoice.commission_percent %>
+</p>
+
+<p>
+  <strong>Return date:</strong>
+  <%= @invoice.return_date %>
+</p>
+
+<p>
+  <strong>Refund amount:</strong>
+  <%= @invoice.refund_amount %>
+</p>
+
+<p>
+  <strong>Refund method:</strong>
+  <%= @invoice.refund_method %>
+</p>
+
+<p>
+  <strong>Sale completed:</strong>
+  <%= @invoice.sale_completed %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
+<%= link_to 'Back', invoices_path %>

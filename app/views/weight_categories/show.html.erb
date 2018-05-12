@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @weight_category.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @weight_category.description %>
+</p>
+
+<p>
+  <strong>Require sale weight:</strong>
+  <%= @weight_category.require_sale_weight %>
+</p>
+
+<%= link_to 'Edit', edit_weight_category_path(@weight_category) %> |
+<%= link_to 'Back', weight_categories_path %>

@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-sm-3"> </div>
+  <div class="col-sm-6" >
+    <% if pedigree.errors.any? %>
+
+        <div id="error_explanation">
+          <div class="alert alert-danger">
+            This form contains <%= pluralize(pedigree.errors.count, "error") %>
+          </div>
+          <ul>
+            <% pedigree.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+
+    <% end %>
+    </div>
+  <div class="col-sm-3"> </div>
+</div>

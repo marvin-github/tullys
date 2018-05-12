@@ -1,0 +1,32 @@
+<%= form_with(model: weight_category, local: true) do |form| %>
+  <% if weight_category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(weight_category.errors.count, "error") %> prohibited this weight_category from being saved:</h2>
+
+      <ul>
+      <% weight_category.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :weight_category_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description, id: :weight_category_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :require_sale_weight %>
+    <%= form.text_field :require_sale_weight, id: :weight_category_require_sale_weight %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

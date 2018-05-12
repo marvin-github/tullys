@@ -1,0 +1,127 @@
+<%= form_with(model: canine, local: true) do |form| %>
+  <% if canine.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(canine.errors.count, "error") %> prohibited this canine from being saved:</h2>
+
+      <ul>
+      <% canine.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description, id: :canine_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :litter_id %>
+    <%= form.collection_select(:litter_id, Litter.all, :id, :name, :include_blank => true) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :micro_chip_number %>
+    <%= form.text_field :micro_chip_number, id: :canine_micro_chip_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :gender %>
+    <%= form.text_field :gender, id: :canine_gender %>
+  </div>
+
+  <div class="field">
+    <%= form.label :color %>
+    <%= form.text_field :color, id: :canine_color %>
+  </div>
+
+  <div class="field">
+    <%= form.label :arrival_weight %>
+    <%= form.text_field :arrival_weight, id: :canine_arrival_weight %>
+  </div>
+
+  <div class="field">
+    <%= form.label :weight_category_id %>
+    <%= form.collection_select(:weight_category_id, WeightCategory.all, :id, :name, :include_blank => true) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sale_weight %>
+    <%= form.text_field :sale_weight, id: :canine_sale_weight %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :price, id: :canine_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sale_price %>
+    <%= form.text_field :sale_price, id: :canine_sale_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fault_discount %>
+    <%= form.text_field :fault_discount, id: :canine_fault_discount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fault_discount %>
+    <%= form.text_field :fault_discount, id: :canine_fault_discount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :registration_company_id %>
+    <%= form.collection_select(:registration_company_id, RegistrationCompany.all, :id, :company_name, :include_blank => true) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :on_hold %>
+    <%= form.text_field :on_hold, id: :canine_on_hold %>
+  </div>
+
+  <div class="field">
+    <%= form.label :on_hold_reason %>
+    <%= form.text_field :on_hold_reason, id: :canine_on_hold_reason %>
+  </div>
+
+  <div class="field">
+    <%= form.label :available_date %>
+    <%= form.date_select :available_date, id: :canine_available_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_sold_date %>
+    <%= form.date_select :last_sold_date, id: :canine_last_sold_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cost %>
+    <%= form.text_field :cost, id: :canine_cost %>
+  </div>
+
+
+  <div class="field">
+    <%= form.label :sale_status_id %>
+    <%= form.collection_select(:sale_status_id, SaleStatus.all, :id, :name, :include_blank => true) %>
+  </div>
+
+  <div class="field">
+
+    <%= form.nested_fields_for :treatments do |ff| %>
+      <%= ff.remove_nested_fields_link 'Remove Treatment ', class: "btn btn-primary" %>&nbsp; &nbsp;
+      <%= ff.label :treatment_id %>
+      <%= ff.collection_select(:treatment_type_id,  TreatmentType.all, :id, :name, {prompt: '- Select -'}, class: 'form-control') %>
+    <% end %>
+  </div>
+  <div>
+    <%= form.add_nested_fields_link :treatments, 'Add Treatment', class: "btn btn-primary" %>
+  </div>
+
+
+  <br>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

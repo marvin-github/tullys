@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Requirements</h1>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+      <th>Start date</th>
+      <th>Name</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @requirements.each do |requirement| %>
+      <tr>
+        <td><%= requirement.start_date %></td>
+        <td><%= requirement.name %></td>
+        <td><%= requirement.status %></td>
+        <td><%= link_to 'Show', requirement %></td>
+        <td><%= link_to 'Edit', edit_requirement_path(requirement) %></td>
+        <td><%= link_to 'Destroy', requirement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Requirement', new_requirement_path %>

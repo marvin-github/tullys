@@ -1,0 +1,49 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  litter: one
+  micro_chip_number: MyString
+  gender: MyString
+  color: MyString
+  arrival_weight: MyString
+  weight_category: one
+  sale_weight: MyString
+  price: 
+  price: 
+  sale_price: 
+  sale_price: 
+  fault_description: MyString
+  fault_discount: 
+  fault_discount: 
+  registration_company: one
+  on_hold: MyString
+  on_hold_reason: MyString
+  available_date: 2018-05-05
+  last_sold_date: 2018-05-05
+  cost: 
+  cost: 
+  sale_status: one
+
+two:
+  litter: two
+  micro_chip_number: MyString
+  gender: MyString
+  color: MyString
+  arrival_weight: MyString
+  weight_category: two
+  sale_weight: MyString
+  price: 
+  price: 
+  sale_price: 
+  sale_price: 
+  fault_description: MyString
+  fault_discount: 
+  fault_discount: 
+  registration_company: two
+  on_hold: MyString
+  on_hold_reason: MyString
+  available_date: 2018-05-05
+  last_sold_date: 2018-05-05
+  cost: 
+  cost: 
+  sale_status: two

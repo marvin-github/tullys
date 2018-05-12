@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Sires</h1>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+      <th>Name</th>
+      <th>Breed</th>
+      <th>Breeder</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sires.each do |sire| %>
+      <tr>
+        <td><%= sire.name %></td>
+        <td><%= sire.breed.name %></td>
+        <td><%= sire.breeder.company_name %></td>
+        <td><%= link_to 'Show', sire %></td>
+        <td><%= link_to 'Edit', edit_sire_path(sire) %></td>
+        <td><%= link_to 'Destroy', sire, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sire', new_sire_path %>

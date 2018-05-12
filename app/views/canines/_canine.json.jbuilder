@@ -1,0 +1,2 @@
+json.extract! canine, :id, :litter_id, :micro_chip_number, :gender, :color, :arrival_weight, :weight_category_id, :sale_weight, :price, :price, :sale_price, :sale_price, :fault_description, :fault_discount, :fault_discount, :registration_company_id, :on_hold, :on_hold_reason, :available_date, :last_sold_date, :cost, :cost, :sale_status_id, :created_at, :updated_at
+json.url canine_url(canine, format: :json)

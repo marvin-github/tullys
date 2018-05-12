@@ -1,0 +1,61 @@
+<%= form_with(model: pedigree, local: true) do |form| %>
+
+        <%= render 'error_header', pedigree: @pedigree %>
+
+
+    <div class="row">
+      <div class="col-sm-3" style="background-color:white;"></div>
+      <div class="col-sm-6" style="background-color:white;">
+        <div class="container">
+          <div class="form-group">
+            <div class="field">
+              <%= form.label :name %>
+              <%= form.text_field :name, id: :pedigree_name, class: "form-control" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="field">
+              <%= form.label :breed %>
+              <%= form.text_field :breed, id: :pedigree_breed, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="field">
+              <%= form.label :Breeder %>
+              <%= form.collection_select(:customer_id, Customer2.where('customer_type_id = 2'), :id, :last_name, {include_blank: '-Select-'}, class: "form-control") %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="field">
+              <%= form.label(:gender_dam, "Dam", class: "radio-inline") %>
+              <%= form.radio_button(:gender, "Dam") %>
+
+
+              <%= form.label(:gender_sire, "Sire",class: "radio-inline") %>
+              <%= form.radio_button(:gender, "Sire") %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="field">
+              <%= form.label :registration_number %>
+              <%= form.text_field :registration_number, id: :pedigree_registration_number, class: "form-control" %>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+          <div class="field">
+            <div class="actions">
+              <%= form.submit %>
+            </div>
+          </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-sm-3" style="background-color:white;"></div>
+  </div>
+<% end %>

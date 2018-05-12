@@ -1,0 +1,4 @@
+class CanineTreatmentType < ApplicationRecord
+
+
+end

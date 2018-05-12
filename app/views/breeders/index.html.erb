@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Breeders</h1>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Company name</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @breeders.each do |breeder| %>
+      <tr>
+        <td><%= breeder.company_name %></td>
+        <td><%= link_to 'Show', breeder %></td>
+        <td><%= link_to 'Edit', edit_breeder_path(breeder) %></td>
+        <td><%= link_to 'Destroy', breeder, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Breeder', new_breeder_path %>

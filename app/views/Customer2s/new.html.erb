@@ -1,0 +1,101 @@
+
+<h1 align="center"> New <%= session[:customer_type_name] %></h1>
+
+<%= form_for @customer, url: {action: "create"} do |form| %>
+  <%= render 'error_header', customer: @customer %>
+  <div class="row">
+  <div class="col-sm-2" style="background-color:white;"></div>
+  <div class="col-sm-8" style="background-color:white;">
+    <div class="container">
+      <div class="form-group">
+
+
+
+        <% if session[:customer_type_id] == 4 %>
+          <div class="field">
+            <%= form.label :company_name %>
+            <%= form.text_field :company_name, id: :customer_company_name, class: "form-control" %>
+          </div>
+        <% else %>
+            <div class="field">
+              <%= form.label :first_name %>
+              <%= form.text_field :first_name, id: :customer_first_name, class: "form-control" %>
+            </div>
+
+            <div class="field">
+              <%= form.label :last_name %>
+              <%= form.text_field :last_name, id: :customer_last_name, class: "form-control" %>
+            </div>
+        <% end %>
+
+        <div class="field">
+          <%= form.label :address1 %>
+          <%= form.text_field :address1, id: :customer_address1, class: "form-control" %>
+        </div>
+
+        <div class="field">
+          <%= form.label :address2 %>
+          <%= form.text_field :address2, id: :customer_address2, class: "form-control" %>
+        </div>
+
+        <div class="field">
+          <%= form.label :city %>
+          <%= form.text_field :city, id: :customer_city, class: "form-control" %>
+        </div>
+
+        <div class="field">
+          <%= form.label :state %>
+          <%= form.text_field :state, id: :customer_state, class: "form-control" %>
+        </div>
+
+        <div class="field">
+          <%= form.label :zip %>
+          <%= form.text_field :zip, id: :customer_zip, class: "form-control" %>
+        </div>
+
+        <div class="field">
+          <%= form.label :mobile_phone %>
+          <%= form.text_field :mobile_phone, id: :customer_mobile_phone, class: "form-control" %>
+        </div>
+
+        <div class="field">
+          <%= form.label :home_phone %>
+          <%= form.text_field :home_phone, id: :customer_home_phone, class: "form-control" %>
+        </div>
+
+        <div class="field">
+          <%= form.label :fax %>
+          <%= form.text_field :fax, id: :customer_fax, class: "form-control" %>
+        </div>
+        <% if session[:customer_type_id] == 2 %>
+          <div class="field">
+            <%= form.label :usda_number %>
+            <%= form.text_field :usda_number, id: :customer_usda_number, class: "form-control" %>
+          </div>
+        <% end %>
+
+        <% if session[:customer_type_id] == 3 %>
+            <div class="field">
+              <%= form.label :Plan %>
+              <%= select "customer", "compensation_type_id", CompensationType.all.collect { |t| [t.name, t.id] }, :include_blank => true %>
+            </div>
+        <% else %>
+            <%= form.hidden_field :compensation_type_id, value: ''  %>
+        <% end %>
+
+        <%= form.hidden_field :customer_type_id, value: session[:customer_type_id]  %>
+
+        <br>
+        <div class="actions">
+          <%= form.submit "Create #{session[:customer_type_name]}" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-2" style="background-color:white;"></div>
+
+</div>
+<% end %>
+
+
+<%= link_to 'Back', customer22s_path %>

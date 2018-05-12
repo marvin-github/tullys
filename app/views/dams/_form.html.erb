@@ -1,0 +1,38 @@
+<%= form_with(model: dam, local: true) do |form| %>
+  <% if dam.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(dam.errors.count, "error") %> prohibited this dam from being saved:</h2>
+
+      <ul>
+      <% dam.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :dam_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :breed_id %>
+    <%= form.collection_select(:breed_id, Breed.all, :id, :name, :include_blank => true) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :breeder_id %>
+    <%= form.collection_select(:breeder_id, Breeder.all, :id, :company_name, :include_blank => true) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :registration_number %>
+    <%= form.text_field :registration_number, id: :dam_registration_number %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

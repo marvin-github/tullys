@@ -1,0 +1,49 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer: one
+  canine: one
+  purchase_date: 2018-05-10
+  sale_price: 9.99
+  sale_discount: 9.99
+  sale_discount_reason: MyString
+  paper_deliver_method: MyString
+  credit_card_last_4: MyString
+  payment_method_1: 1
+  payment_method_2: 1
+  payment_amount_1: 9.99
+  payment_amount_2: 9.99
+  payment_date: 2018-05-10
+  veterinarian: one
+  sales_person_1: 1
+  sales_person_2: 1
+  commission_percent: 9.99
+  return_date: 2018-05-10
+  refund_amount: 9.99
+  refund_method: MyString
+  sale_completed: MyString
+  invoice_status: 1
+
+two:
+  customer: two
+  canine: two
+  purchase_date: 2018-05-10
+  sale_price: 9.99
+  sale_discount: 9.99
+  sale_discount_reason: MyString
+  paper_deliver_method: MyString
+  credit_card_last_4: MyString
+  payment_method_1: 1
+  payment_method_2: 1
+  payment_amount_1: 9.99
+  payment_amount_2: 9.99
+  payment_date: 2018-05-10
+  veterinarian: two
+  sales_person_1: 1
+  sales_person_2: 1
+  commission_percent: 9.99
+  return_date: 2018-05-10
+  refund_amount: 9.99
+  refund_method: MyString
+  sale_completed: MyString
+  invoice_status: 1

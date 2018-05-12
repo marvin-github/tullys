@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @return_reason.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @return_reason.description %>
+</p>
+
+<%= link_to 'Edit', edit_return_reason_path(@return_reason) %> |
+<%= link_to 'Back', return_reasons_path %>

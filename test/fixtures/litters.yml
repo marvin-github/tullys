@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  arrival_date: 2018-05-05
+  available_date: 2018-05-05
+  birth_date: 2018-05-05
+  breed: one
+  broker: one
+  pedigree: one
+  dam: one
+  sire: one
+  male_count: 1
+  female_count: 1
+
+two:
+  arrival_date: 2018-05-05
+  available_date: 2018-05-05
+  birth_date: 2018-05-05
+  breed: two
+  broker: two
+  pedigree: two
+  dam: two
+  sire: two
+  male_count: 1
+  female_count: 1

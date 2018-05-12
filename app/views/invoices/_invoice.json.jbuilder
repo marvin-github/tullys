@@ -1,0 +1,2 @@
+json.extract! invoice, :id, :customer_id, :canine_id, :purchase_date, :sale_price, :sale_discount, :sale_discount_reason, :paper_deliver_method, :credit_card_last_4, :payment_method_1, :payment_method_2, :payment_amount_1, :payment_amount_2, :payment_date, :veterinarian_id, :sales_person_1, :sales_person_2, :commission_percent, :return_date, :refund_amount, :refund_method, :sale_completed, :invoice_status, :created_at, :updated_at
+json.url invoice_url(invoice, format: :json)

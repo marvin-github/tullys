@@ -1,0 +1,83 @@
+<%= form_with(model: customer, local: true) do |form| %>
+  <% if customer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
+
+      <ul>
+      <% customer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="row">
+      <div class="col-sm-2" style="background-color:white;"></div>
+      <div class="col-sm-8" style="background-color:white;">
+        <div class="container">
+          <div class="form-group">
+
+            <div class="field">
+              <%= form.label :first_name %>
+              <%= form.text_area :first_name, id: :customer_first_name, class: "form-control" %>
+            </div>
+
+            <div class="field">
+              <%= form.label :last_name %>
+              <%= form.text_area :last_name, id: :customer_last_name, class: "form-control" %>
+            </div>
+
+            <div class="field">
+              <%= form.label :company_name %>
+              <%= form.text_area :company_name, id: :customer_company_name, class: "form-control" %>
+            </div>
+
+            <div class="field">
+              <%= form.label :address1 %>
+              <%= form.text_area :address1, id: :customer_address1, class: "form-control" %>
+            </div>
+
+            <div class="field">
+              <%= form.label :address2 %>
+              <%= form.text_area :address2, id: :customer_address2, class: "form-control" %>
+            </div>
+
+            <div class="field">
+              <%= form.label :city %>
+              <%= form.text_area :city, id: :customer_city, class: "form-control" %>
+            </div>
+
+            <div class="field">
+              <%= form.label :state %>
+              <%= form.text_area :state, id: :customer_state, class: "form-control" %>
+            </div>
+
+            <div class="field">
+              <%= form.label :zip %>
+              <%= form.text_area :zip, id: :customer_zip, class: "form-control" %>
+            </div>
+
+            <div class="field">
+              <%= form.label :mobile_phone %>
+              <%= form.text_area :mobile_phone, id: :customer_mobile_phone, class: "form-control" %>
+            </div>
+
+            <div class="field">
+              <%= form.label :home_phone %>
+              <%= form.text_area :home_phone, id: :customer_home_phone, class: "form-control" %>
+            </div>
+
+            <div class="field">
+              <%= form.label :fax %>
+              <%= form.text_area :fax, id: :customer_fax, class: "form-control" %>
+            </div>
+
+            <div class="actions">
+              <%= form.submit %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-2" style="background-color:white;"></div>
+    </div>
+<% end %>

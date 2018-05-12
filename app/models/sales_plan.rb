@@ -1,0 +1,2 @@
+class SalesPlan < ApplicationRecord
+end

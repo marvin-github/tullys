@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @sire.name %>
+</p>
+
+<p>
+  <strong>Breed:</strong>
+  <%= @sire.breed.name %>
+</p>
+
+<p>
+  <strong>Breeder:</strong>
+  <%= @sire.breeder.company_name %>
+</p>
+
+<p>
+  <strong>Registration number:</strong>
+  <%= @sire.registration_number %>
+</p>
+
+
+<%= link_to 'Edit', edit_sire_path(@sire) %> |
+<%= link_to 'Back', sires_path %>

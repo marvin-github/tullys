@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_date: 2018-05-08
+  end_date: 2018-05-08
+  variable_percent: 
+  variable_percent: 
+  flat_percent: 
+  flat_percent: 
+  flat_amount: 
+  flat_amount: 
+  max_amount: 
+  max_amount: 
+
+two:
+  start_date: 2018-05-08
+  end_date: 2018-05-08
+  variable_percent: 
+  variable_percent: 
+  flat_percent: 
+  flat_percent: 
+  flat_amount: 
+  flat_amount: 
+  max_amount: 
+  max_amount: 

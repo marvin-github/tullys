@@ -1,0 +1,72 @@
+<%= form_with(model: sales_plan, local: true) do |form| %>
+  <% if sales_plan.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sales_plan.errors.count, "error") %> prohibited this sales_plan from being saved:</h2>
+
+      <ul>
+      <% sales_plan.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :sales_plan_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_date %>
+    <%= form.date_select :start_date, id: :sales_plan_start_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_date %>
+    <%= form.date_select :end_date, id: :sales_plan_end_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :variable_percent %>
+    <%= form.text_field :variable_percent, id: :sales_plan_variable_percent %>
+  </div>
+
+  <div class="field">
+    <%= form.label :variable_percent %>
+    <%= form.text_field :variable_percent, id: :sales_plan_variable_percent %>
+  </div>
+
+  <div class="field">
+    <%= form.label :flat_percent %>
+    <%= form.text_field :flat_percent, id: :sales_plan_flat_percent %>
+  </div>
+
+  <div class="field">
+    <%= form.label :flat_percent %>
+    <%= form.text_field :flat_percent, id: :sales_plan_flat_percent %>
+  </div>
+
+  <div class="field">
+    <%= form.label :flat_amount %>
+    <%= form.text_field :flat_amount, id: :sales_plan_flat_amount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :flat_amount %>
+    <%= form.text_field :flat_amount, id: :sales_plan_flat_amount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :max_amount %>
+    <%= form.text_field :max_amount, id: :sales_plan_max_amount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :max_amount %>
+    <%= form.text_field :max_amount, id: :sales_plan_max_amount %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

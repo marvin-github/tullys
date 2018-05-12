@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Arrival date:</strong>
+  <%= @litter.arrival_date %>
+</p>
+
+<p>
+  <strong>Available date:</strong>
+  <%= @litter.available_date %>
+</p>
+
+<p>
+  <strong>Birth date:</strong>
+  <%= @litter.birth_date %>
+</p>
+
+<p>
+  <strong>Breed:</strong>
+  <%= @litter.breed.name %>
+</p>
+
+<p>
+  <strong>Broker:</strong>
+  <%= @litter.broker.company_name %>
+</p>
+
+<p>
+  <strong>Dam:</strong>
+  <%= @litter.dam.name %>
+</p>
+
+<p>
+  <strong>Sire:</strong>
+  <%= @litter.sire.name %>
+</p>
+
+<p>
+  <strong>Male count:</strong>
+  <%= @litter.male_count %>
+</p>
+
+<p>
+  <strong>Female count:</strong>
+  <%= @litter.female_count %>
+</p>
+
+<%= link_to 'Edit', edit_litter_path(@litter) %> |
+<%= link_to 'Back', litters_path %>

@@ -10,10 +10,6 @@
   <%= @customer.last_name %>
 </p>
 
-<p>
-  <strong>Company name:</strong>
-  <%= @customer.company_name %>
-</p>
 
 <p>
   <strong>Address1:</strong>
@@ -55,10 +51,7 @@
   <%= @customer.email %>
 </p>
 
-<p>
-  <strong>Fax:</strong>
-  <%= @customer.fax %>
-</p>
 
 <%= link_to 'Edit', edit_customer_path(@customer) %> |
-<%= link_to 'Back', customers_path %>
+<%= link_to 'Back', customers_path() %> |
+<%= link_to 'Invoice', new_invoice_path(:id => @customer.id) %>

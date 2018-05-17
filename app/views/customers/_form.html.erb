@@ -21,10 +21,7 @@
     <%= form.text_field :last_name, id: :customer_last_name %>
   </div>
 
-  <div class="field">
-    <%= form.label :company_name %>
-    <%= form.text_field :company_name, id: :customer_company_name %>
-  </div>
+
 
   <div class="field">
     <%= form.label :address1 %>
@@ -53,12 +50,12 @@
 
   <div class="field">
     <%= form.label :mobile_phone %>
-    <%= form.text_field :mobile_phone, id: :customer_mobile_phone %>
+    <%= form.text_field :mobile_phone, id: :customer_mobile_phone, placeholder: 'xxx-xxx-xxxx' %>
   </div>
 
   <div class="field">
     <%= form.label :home_phone %>
-    <%= form.text_field :home_phone, id: :customer_home_phone %>
+    <%= form.text_field :home_phone, id: :customer_home_phone, placeholder: 'xxx-xxx-xxxx' %>
   </div>
 
   <div class="field">
@@ -66,10 +63,6 @@
     <%= form.text_field :email, id: :customer_email %>
   </div>
 
-  <div class="field">
-    <%= form.label :fax %>
-    <%= form.text_field :fax, id: :customer_fax %>
-  </div>
 
   <div class="actions">
     <%= form.submit %>

@@ -4,23 +4,27 @@
 
 <table class="table table-striped">
   <thead>
-    <tr>
-      <th>Last name</th>
-      <th>Email</th>
+  <tr>
+    <th>Last name</th>
+    <th>First Name</th>
+    <th>Home Phone</th>
+    <th>Mobile Phone</th>
 
-    </tr>
+  </tr>
   </thead>
 
   <tbody>
-    <% @customers.each do |customer| %>
+  <% @customers.each do |customer| %>
       <tr>
         <td><%= customer.last_name %></td>
-        <td><%= customer.email %></td>
+        <td><%= customer.first_name %></td>
+        <td><%= customer.home_phone %></td>
+        <td><%= customer.mobile_phone %></td>
         <td><%= link_to 'Show', customer %></td>
         <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
         <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
+  <% end %>
   </tbody>
 </table>
 

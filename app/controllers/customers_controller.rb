@@ -4,7 +4,11 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
-    @customers = Customer.all
+    if !params[:phone].blank?
+      @customers = Customer.where("home_phone = ? or mobile_phone = ?", params[:phone], params[:phone])
+    else
+      @customers = Customer.all
+    end
   end
 
   # GET /customers/1
@@ -24,6 +28,11 @@ class CustomersController < ApplicationController
   # POST /customers
   # POST /customers.json
   def create
+
+    potential_duplicates = Customer.where("last_name = ? or home_phone = ? or mobile_phone = ?",
+                                          params[:last_name], params[:home_phone], params[:mobile_phone])
+
+
     @customer = Customer.new(customer_params)
 
     respond_to do |format|
@@ -69,6 +78,7 @@ class CustomersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
-      params.require(:customer).permit(:first_name, :last_name, :company_name, :address1, :address2, :city, :state, :zip, :mobile_phone, :home_phone, :email, :fax)
+      params.require(:customer).permit(:first_name, :last_name, :address1, :address2, :city, :state, :zip, :mobile_phone, :home_phone, :email)
     end
+
 end

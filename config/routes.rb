@@ -15,7 +15,11 @@ Rails.application.routes.draw do
   resources :dams
   resources :pictures
   resources :breeds
-  resources :customers
+  resources :customers do
+    collection do
+      get 'phone_search'
+    end
+  end
   resources :breeders
   resources :brokers
   resources :veterinarians

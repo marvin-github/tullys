@@ -15,6 +15,10 @@ class InvoicesController < ApplicationController
   # GET /invoices/new
   def new
     @invoice = Invoice.new
+    if !params[:id].blank?
+      @invoice.customer_id = params[:id]
+    end
+
   end
 
   # GET /invoices/1/edit

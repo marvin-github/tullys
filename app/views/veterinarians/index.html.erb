@@ -6,6 +6,8 @@
   <thead>
     <tr>
       <th>Company name</th>
+      <th>Work phone</th>
+      <th>Business hours</th>
      </tr>
   </thead>
 
@@ -13,6 +15,8 @@
     <% @veterinarians.each do |veterinarian| %>
       <tr>
         <td><%= veterinarian.company_name %></td>
+        <td><%= veterinarian.home_phone %></td>
+        <td><%= veterinarian.business_hours %></td>
         <td><%= link_to 'Show', veterinarian %></td>
         <td><%= link_to 'Edit', edit_veterinarian_path(veterinarian) %></td>
         <td><%= link_to 'Destroy', veterinarian, method: :delete, data: { confirm: 'Are you sure?' } %></td>

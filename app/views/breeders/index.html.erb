@@ -5,14 +5,21 @@
 <table class="table table-striped">
   <thead>
   <tr>
+    <th>Last name</th>
+    <th>First name</th>
     <th>Company name</th>
+    <th>Work phone</th>
+
     </tr>
   </thead>
 
   <tbody>
     <% @breeders.each do |breeder| %>
       <tr>
+        <td><%= breeder.last_name %></td>
+        <td><%= breeder.first_name %></td>
         <td><%= breeder.company_name %></td>
+        <td><%= breeder.home_phone %></td>
         <td><%= link_to 'Show', breeder %></td>
         <td><%= link_to 'Edit', edit_breeder_path(breeder) %></td>
         <td><%= link_to 'Destroy', breeder, method: :delete, data: { confirm: 'Are you sure?' } %></td>

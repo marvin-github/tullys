@@ -65,6 +65,20 @@ class InvoicesController < ApplicationController
     end
   end
 
+  def display_pdf
+    @invoice = Invoice.find(params[:invoice])
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = InvoicePdf.new(@invoice)
+        send_data pdf.render,
+                  filename: "#{@invoice.id}-#{@invoice.customer.last_name}-invoice.pdf",
+                  type: 'application/pdf',
+                  disposition: 'inline'
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_invoice
@@ -73,6 +87,12 @@ class InvoicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def invoice_params
-      params.require(:invoice).permit(:customer_id, :canine_id, :purchase_date, :sale_price, :sale_discount, :sale_discount_reason, :paper_deliver_method, :credit_card_last_4, :payment_method_1, :payment_method_2, :payment_amount_1, :payment_amount_2, :payment_date, :veterinarian_id, :sales_person_1, :sales_person_2, :commission_percent, :return_date, :refund_amount, :refund_method, :sale_completed, :invoice_status_id)
+      params.require(:invoice).permit(:customer_id, :canine_id, :purchase_date, :sale_price, :sale_discount,
+                                      :sale_discount_reason, :paper_deliver_method, :credit_card_last_4,
+                                      :payment_method_1, :payment_method_2, :payment_amount_1,
+                                      :payment_amount_2, :payment_date, :veterinarian_id,
+                                      :sales_person_1, :sales_person_2, :commission_percent,
+                                      :return_date, :refund_amount, :refund_method,
+                                      :sale_completed, :invoice_status_id)
     end
 end

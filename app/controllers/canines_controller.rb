@@ -76,7 +76,7 @@ class CaninesController < ApplicationController
                                      :price, :sale_price, :fault_description,
                                      :fault_discount, :fault_discount, :registration_company_id,
                                      :on_hold, :on_hold_reason, :available_date, :last_sold_date,
-                                     :cost, :sale_status_id,
+                                     :cost, :sale_status_id, :description, :registration_number,
                                      treatments_attributes:[:_destroy, :id, :canine_id, :treatment_type_id])
     end
 end

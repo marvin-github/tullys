@@ -27,7 +27,7 @@
           <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Data Entry</a>
           <!--<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Dropdown link </a>-->
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-
+              <%=	 link_to 'Invoice', invoices_path, :class =>" dropdown-item"  %>
               <%=	 link_to Customer, phone_search_customers_path, :class =>" dropdown-item"  %>
               <%=	 link_to Veterinarian, veterinarians_path, :class =>" dropdown-item"  %>
               <%=	 link_to Broker, brokers_path, :class =>" dropdown-item"  %>
@@ -43,7 +43,7 @@
               <%=	 link_to 'Treatment Types', treatment_types_path, :class =>" dropdown-item"  %>
               <%=	 link_to 'Sales Plans', sales_plans_path, :class =>" dropdown-item"  %>
               <%=	 link_to 'Sales People', sales_people_path, :class =>" dropdown-item"  %>
-              <%=	 link_to 'Invoice', invoices_path, :class =>" dropdown-item"  %>
+
             </div>
 
         </li>

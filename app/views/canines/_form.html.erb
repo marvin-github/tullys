@@ -76,6 +76,11 @@
     <%= form.collection_select(:registration_company_id, RegistrationCompany.all, :id, :company_name, :include_blank => true) %>
   </div>
 
+    <div class="field">
+      <%= form.label :registration_number %>
+      <%= form.text_field :registration_number, id: :canine_registration_number %>
+    </div>
+
   <div class="field">
     <%= form.label :on_hold %>
     <%= form.text_field :on_hold, id: :canine_on_hold %>

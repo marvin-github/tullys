@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   resources :requirements
   resources :invoice_statuses
-  resources :invoices
+  resources :invoices do
+    collection do
+      get 'display_pdf'
+    end
+  end
   resources :payment_methods
   resources :sales_people
   resources :sales_plans

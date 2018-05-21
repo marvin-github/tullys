@@ -77,12 +77,16 @@
 
 <p>
   <strong>Sales person 1:</strong>
-  <%= @invoice.sales_person_1 %>
+  <% if !@invoice.sales_person_1.blank? %>
+    <%= SalesPerson.find(@invoice.sales_person_1).first_last_name %>
+  <% end %>
 </p>
 
 <p>
   <strong>Sales person 2:</strong>
-  <%= @invoice.sales_person_2 %>
+  <% if !@invoice.sales_person_2.blank? %>
+      <%= SalesPerson.find(@invoice.sales_person_2).first_last_name %>
+  <% end %>
 </p>
 
 <p>
@@ -113,4 +117,5 @@
 
 
 <%= link_to 'Edit', edit_invoice_path(@invoice) %> |
-<%= link_to 'Back', invoices_path %>
+<%= link_to 'Back', invoices_path %> |
+<%= link_to 'Print', display_pdf_invoices_path(:invoice => @invoice, format: 'pdf') %>

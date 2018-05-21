@@ -59,4 +59,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.0'
 gem 'jquery-turbolinks', '~> 2.1.0'
-
+gem 'prawn', '~> 2.2', '>= 2.2.2'

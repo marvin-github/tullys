@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :customer_id %>
-    Customer:<%= form.collection_select(:customer_id, Customer.all, :id, :full_name, :include_blank => true) %>
+    <%= form.collection_select(:customer_id, Customer.all, :id, :full_name, :include_blank => true) %>
   </div>
 
   <div class="field">
@@ -23,12 +23,12 @@
 
   <div class="field">
     <%= form.label :sales_person_1 %>
-    <%= form.collection_select(:sales_person_1_id, SalesPerson.all, :id, :last_name, :include_blank => true) %>
+    <%= form.collection_select(:sales_person_1, SalesPerson.all, :id, :last_name, :include_blank => true) %>
   </div>
 
   <div class="field">
     <%= form.label :sales_person_2 %>
-    <%= form.collection_select(:sales_person_2_id, SalesPerson.all, :id, :last_name, :include_blank => true) %>
+    <%= form.collection_select(:sales_person_2, SalesPerson.all, :id, :last_name, :include_blank => true) %>
   </div>
 
   <div class="field">

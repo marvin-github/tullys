@@ -1,3 +1,4 @@
+
 <%= form_with(model: invoice, local: true) do |form| %>
   <% if invoice.errors.any? %>
     <div id="error_explanation">
@@ -11,119 +12,237 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :customer_id %>
-    <%= form.collection_select(:customer_id, Customer.all, :id, :full_name, :include_blank => true) %>
+
+
+  <div class="container-fluid">
+    <div style="background-color:lightblue">
+    <br>
+
+
+
+    <!--*** PET INFO ***    -->
+
+    <h2 align="center"> Pet Info</h2>
+    <br>
+
+    <div class="row" >
+      <div class="col-sm-3"></div>
+      <div class="col-sm-6">
+        <%= form.label :canine_id %>
+        <%= form.select :canine_id, Canine.where("sale_status_id = 1").order(description: :asc).collect {|c| [c.description + ' | Price $' + c.price.to_s + ' | Sale Price $' + c.sale_price.to_s, c.id]}, {:include_blank => true}, {:class => 'form-control'} %>
+
+      </div>
+      <div class="col-sm-3"></div>
+    </div>
+    <br>
+    <div class="row" >
+      <div class="col-sm-3"></div>
+      <div class="col-sm-6">
+        <%= form.label :veterinarian_id %>
+        <%= form.collection_select(:veterinarian_id, Veterinarian.all, :id, :company_name,  {:include_blank => true}, {:class => 'form-control'}) %>
+      </div>
+      <div class="col-sm-3"></div>
+    </div>
+    <br><br>
+
+
+
+      <!--*** SALES INFO ***    -->
+    <h2 align="center"> Sales Info</h2>
+      <div class="row" >
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+          <%= form.label :invoice_status_id %>
+                    <%= form.collection_select(:invoice_status_id, InvoiceStatus.all, :id, :name,  {:include_blank => true}, {:class => 'form-control'}) %>
+          <div class="col-sm-3"></div>
+        </div>
+      </div>
+
+    <br>
+      <div class="row" >
+        <div class="col-sm-3"></div>
+        <div class="col-sm-3">
+          <%= form.label :customer_id %>
+          <%= form.collection_select(:customer_id, Customer.all.order(last_name: :asc), :id, :full_name,  {:include_blank => true}, {:class => 'form-control'}) %>
+        </div>
+
+        <div class="col-sm-3">
+          <%= form.label :purchase_date %>
+          <%= form.text_field :purchase_date, id: :invoice_purchase_date, data:{ provide:'datepicker' }, class: "form-control" %>
+        </div>
+        <div class="col-sm-3"></div>
+      </div>
+
+      <div class="row" >
+
+
+        <div class="col-sm-3"></div>
+    </div>
+
+    <br>
+    <div class="row">
+      <div class="col-sm-3"></div>
+
+
+      <div class="col-sm-3">
+        <%= form.label :sales_person_1 %>
+        <%= form.collection_select(:sales_person_1, SalesPerson.all, :id, :last_name,  {:include_blank => true}, {:class => 'form-control'}) %>
+      </div>
+
+      <div class="col-sm-3">
+        <%= form.label :sales_person_2 %>
+        <%= form.collection_select(:sales_person_2, SalesPerson.all, :id, :last_name,  {:include_blank => true}, {:class => 'form-control'}) %>
+      </div>
+      <div class="col-sm-3"></div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+        <%= form.label :sale_price %>
+        <%= form.number_field :sale_price, id: :invoice_sale_price, class: "form-control"  %>
+      </div>
+
+      <div class="col-sm-3">
+        <%= form.label :sale_discount %>
+        <%= form.number_field :sale_discount, id: :invoice_sale_discount, class: "form-control" %>
+      </div>
+
+      <div class="col-sm-3"></div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-6">
+        <%= form.label :sale_discount_reason %>
+        <%= form.text_area :sale_discount_reason, id: :invoice_sale_discount_reason, class: "form-control"  %>
+      </div>
+      <div class="col-sm-3"></div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-6">
+        <%= form.label :sale_completed %>
+        <%= form.text_field :sale_completed, id: :invoice_sale_completed, class: "form-control" %>
+      </div>
+      <div class="col-sm-3"></div>
+    </div>
+<br><br>
+
+
+
+
+  <!--*** PAYMENT INFO ***    -->
+
+  <h2 align="center"> Payment Info</h2>
+  <br>
+  <div class="row" >
+    <div class="col-sm-3"></div>
+    <div class="col-sm-2">
+      <%= form.label :payment_method_1 %>
+      <%= form.collection_select(:payment_method_id, PaymentMethod.all, :id, :name,  {:include_blank => true}, {:class => 'form-control'}) %>
+    </div>
+
+    <div class="col-sm-2">
+      <%= form.label :payment_amount_1 %>
+      <%= form.number_field :payment_amount_1, id: :invoice_payment_amount_1, class: "form-control", placeholder: "$0.0" %>
+    </div>
+
+    <div class="col-sm-2">
+      <%= form.label :credit_card_last_4 %>
+      <%= form.text_field :credit_card_last_4, id: :invoice_credit_card_last_4, class: "form-control" %>
+    </div>
   </div>
+  <br>
+  <div class="row" >
+    <div class="col-sm-3"></div>
+    <div class="col-sm-2">
+      <%= form.label :payment_method_2 %>
+      <%= form.collection_select(:payment_method_id, PaymentMethod.all, :id, :name,  {:include_blank => true}, {:class => 'form-control'}) %>
+    </div>
 
-  <div class="field">
-    <%= form.label :canine_id %>
-    <%= form.collection_select(:canine_id, Canine.all, :id, :description, :include_blank => true) %>
+    <div class="col-sm-2">
+      <%= form.label :payment_amount_2 %>
+      <%= form.number_field :payment_amount_2, id: :invoice_payment_amount_2, class: "form-control", placeholder: "$0.0" %>
+    </div>
+
+    <div class="col-sm-2">
+      <%= form.label :credit_card_last_4 %>
+      <%= form.text_field :credit_card_last_4, id: :invoice_credit_card_last_4, class: "form-control" %>
+    </div>
   </div>
+  <br>
 
-  <div class="field">
-    <%= form.label :sales_person_1 %>
-    <%= form.collection_select(:sales_person_1, SalesPerson.all, :id, :last_name, :include_blank => true) %>
+
+
+
+  <div class="row" >
+    <div class="col-sm-3"></div>
+    <div class="col-sm-3">
+      <%= form.label :payment_date %>
+      <%= form.text_field :payment_date, id: :invoice_payment_date, data:{ provide:'datepicker' }, class: "form-control" %>
+    </div>
+
+    <div class="col-sm-3">
+      <%= form.label :paper_deliver_method %>
+      <%= form.text_field :paper_deliver_method, id: :invoice_paper_deliver_method, class: "form-control" %>
+    </div>
+    <div class="col-sm-3"></div>
   </div>
+  <br><br>
 
-  <div class="field">
-    <%= form.label :sales_person_2 %>
-    <%= form.collection_select(:sales_person_2, SalesPerson.all, :id, :last_name, :include_blank => true) %>
+  <!--*** RETURN INFO ***    -->
+  <br>
+  <h2 align="center"> Return Info</h2>
+  <br>
+  <div class="row" >
+    <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+      <%= form.label :return_date %>
+      <%= form.text_field :return_date, id: :invoice_return_date, data:{ provide:'datepicker' }, class: "form-control" %>
+    </div>
+
+    <div class="col-sm-3">
+      <%= form.label :refund_method %>
+      <%= form.text_field :refund_method, id: :invoice_refund_method, class: "form-control" %>
+    </div>
+    <div class="col-sm-3"></div>
+
   </div>
+  <br>
+  <div class="row" >
+    <div class="col-sm-3"></div>
 
-  <div class="field">
-    <%= form.label :veterinarian_id %>
-    <%= form.collection_select(:veterinarian_id, Veterinarian.all, :id, :company_name, :include_blank => true) %>
+    <div class="col-sm-6">
+      <%= form.label :refund_amount %>
+      <%= form.number_field :refund_amount, id: :invoice_refund_amount, class: "form-control" %>
+    </div>
+    <div class="col-sm-3"></div>
   </div>
+  <br>
 
-  <div class="field">
-    <%= form.label :invoice_status_id %>
-    <%= form.collection_select(:invoice_status_id, InvoiceStatus.all, :id, :name, :include_blank => true) %>
+  <div class="row" >
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+      <%= form.label :return_reason %>
+      <%= form.text_area :return_reason, id: :invoice_return_reason, class: "form-control" %>
+    </div>
+    <div class="col-sm-3"></div>
   </div>
-
-  <div class="field">
-    <%= form.label :purchase_date %>
-    <%= form.date_select :purchase_date, id: :invoice_purchase_date %>
+  <br>
+  <div class="row">
+    <div class="col-sm-5"></div>
+    <div class="col-sm-1">
+      <div class="actions">
+        <%= form.submit :class => "btn btn-dark" %>
+      </div>
+    </div>
   </div>
+  <br><br>
 
-  <div class="field">
-    <%= form.label :sale_price %>
-    <%= form.text_field :sale_price, id: :invoice_sale_price %>
-  </div>
-
-  <div class="field">
-    <%= form.label :sale_discount %>
-    <%= form.text_field :sale_discount, id: :invoice_sale_discount %>
-  </div>
-
-  <div class="field">
-    <%= form.label :sale_discount_reason %>
-    <%= form.text_field :sale_discount_reason, id: :invoice_sale_discount_reason %>
-  </div>
-
-  <div class="field">
-    <%= form.label :paper_deliver_method %>
-    <%= form.text_field :paper_deliver_method, id: :invoice_paper_deliver_method %>
-  </div>
-
-  <div class="field">
-    <%= form.label :credit_card_last_4 %>
-    <%= form.text_field :credit_card_last_4, id: :invoice_credit_card_last_4 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :payment_method_1 %>
-    <%= form.collection_select(:payment_method_id, PaymentMethod.all, :id, :name, :include_blank => true) %>
-  </div>
-
-  <div class="field">
-    <%= form.label :payment_method_2 %>
-    <%= form.collection_select(:payment_method_id, PaymentMethod.all, :id, :name, :include_blank => true) %>
-  </div>
-
-  <div class="field">
-    <%= form.label :payment_amount_1 %>
-    <%= form.text_field :payment_amount_1, id: :invoice_payment_amount_1 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :payment_amount_2 %>
-    <%= form.text_field :payment_amount_2, id: :invoice_payment_amount_2 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :payment_date %>
-    <%= form.date_select :payment_date, id: :invoice_payment_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :commission_percent %>
-    <%= form.text_field :commission_percent, id: :invoice_commission_percent %>
-  </div>
-
-  <div class="field">
-    <%= form.label :return_date %>
-    <%= form.date_select :return_date, id: :invoice_return_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :refund_amount %>
-    <%= form.text_field :refund_amount, id: :invoice_refund_amount %>
-  </div>
-
-  <div class="field">
-    <%= form.label :refund_method %>
-    <%= form.text_field :refund_method, id: :invoice_refund_method %>
-  </div>
-
-  <div class="field">
-    <%= form.label :sale_completed %>
-    <%= form.text_field :sale_completed, id: :invoice_sale_completed %>
-  </div>
-
-
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
+</div>
+</div>

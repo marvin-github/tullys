@@ -11,52 +11,56 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :arrival_date %>
-    <%= form.date_select :arrival_date, id: :litter_arrival_date %>
-  </div>
+  <div class="container-fluid">
+    <div class="form-group">
+      <%= form.label :arrival_date %>
+      <%= form.text_field :arrival_date, id: :litter_arrival_date, data:{ provide:'datepicker' }, class: "form-control-sm"  %>
+    </div>
+  
+    <div class="form-group">
+      <%= form.label :available_date %>
+      <%= form.text_field :available_date, id: :litter_available_date, data:{ provide:'datepicker' }, class: "form-control-sm" %>
+    </div>
+  
+    <div class="form-group">
+      <%= form.label :birth_date %>
+      <%= form.text_field :birth_date, id: :litter_birth_date, data:{ provide:'datepicker' }, class: "form-control-sm" %>
+    </div>
+  
+    <div class="form-group">
+      <%= form.label :breed_id %>
+      <%= form.collection_select(:breed_id, Breed.all, :id, :name, {:include_blank => true}, {:class => 'form-control-sm', :style => "width:300px"}) %>
+    </div>
+  
+    <div class="form-group">
+      <%= form.label :broker_id %>
+      <%= form.collection_select(:broker_id, Broker.all, :id, :company_name, {:include_blank => true}, {:class => 'form-control-sm', :style => "width:300px"}) %>
+    </div>
+  
+    <div class="form-group">
+      <%= form.label :dam_id %>
+      <%= form.collection_select(:dam_id, Dam.all, :id, :name, {:include_blank => true}, {:class => 'form-control-sm mr-sm-5'}) %>
+    </div>
+  
+    <div class="form-group">
+      <%= form.label :sire_id %>
+      <%= form.collection_select(:sire_id, Sire.all, :id, :name, {:include_blank => true}, {:class => 'form-control-sm mr-sm-5'}) %>
+    </div>
+  
+    <div class="form-group">
+      <%= form.label :male_count %>
+      <%= form.number_field :male_count, id: :litter_male_count, class: "form-control-sm" %>
+    </div>
+  
+    <div class="form-group">
+      <%= form.label :female_count %>
+      <%= form.number_field :female_count, id: :litter_female_count, class: "form-control-sm" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :available_date %>
-    <%= form.date_select :available_date, id: :litter_available_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :birth_date %>
-    <%= form.date_select :birth_date, id: :litter_birth_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :breed_id %>
-    <%= form.collection_select(:breed_id, Breed.all, :id, :name, :include_blank => true) %>
-  </div>
-
-  <div class="field">
-    <%= form.label :broker_id %>
-    <%= form.collection_select(:broker_id, Broker.all, :id, :company_name, :include_blank => true) %>
-  </div>
-
-  <div class="field">
-    <%= form.label :dam_id %>
-    <%= form.collection_select(:dam_id, Dam.all, :id, :name, :include_blank => true) %>
-  </div>
-
-  <div class="field">
-    <%= form.label :sire_id %>
-    <%= form.collection_select(:sire_id, Sire.all, :id, :name, :include_blank => true) %>
-  </div>
-
-  <div class="field">
-    <%= form.label :male_count %>
-    <%= form.number_field :male_count, id: :litter_male_count %>
-  </div>
-
-  <div class="field">
-    <%= form.label :female_count %>
-    <%= form.number_field :female_count, id: :litter_female_count %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+    <div class="form-group">
+      <div class="actions">
+        <%= form.submit :class => "btn btn-success btn-mini" %>
+      </div>
+    </div>
   </div>
 <% end %>

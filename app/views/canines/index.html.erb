@@ -5,6 +5,7 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <th>Micro Chip</th>
       <th>Description</th>
       <th>Gender</th>
       <th>Sale status</th>
@@ -14,12 +15,13 @@
   <tbody>
     <% @canines.each do |canine| %>
       <tr>
+        <td><%= canine.micro_chip_number.last(5) %></td>
         <td><%= canine.description %></td>
         <td><%= canine.gender %></td>
         <td><%= canine.sale_status.name %></td>
-        <td><%= link_to 'Show', canine %></td>
-        <td><%= link_to 'Edit', edit_canine_path(canine) %></td>
-        <td><%= link_to 'Destroy', canine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <!--<td><%= link_to 'Show', canine %></td>-->
+        <td><%= link_to 'Edit ', edit_canine_path(canine), class: "btn btn-outline-dark btn-sm" %></td>
+        <td><%= link_to 'Delete', canine, method: :delete, class: "btn btn-outline-dark btn-sm", data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -27,4 +29,4 @@
 
 <br>
 
-<%= link_to 'New Canine', new_canine_path %>
+<%= link_to 'New Canine', new_canine_path, :class => "btn btn-dark" %>

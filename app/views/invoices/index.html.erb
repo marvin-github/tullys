@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Invoices</h1>
-
+<div class="container-fluid">
 <table class="table table-striped">
   <thead>
     <tr>
@@ -19,9 +19,12 @@
         <td><%= invoice.canine.description %></td>
         <td><%= invoice.purchase_date %></td>
         <td><%= invoice.invoice_status.name %></td>
-        <td><%= link_to 'Show', invoice %></td>
-        <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
-        <td><%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <div class="btn-group">
+        <!--<td><%= link_to 'Show', invoice, class: "btn btn-outline-dark btn-sm"%></td>-->
+        <td><%= link_to 'Edit', edit_invoice_path(invoice), class: "btn btn-outline-dark btn-sm" %></td>
+        <!--<td><%= link_to 'Delete', invoice, class: "btn btn-outline-dark btn-sm", method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+        <td><%= link_to 'Print', display_pdf_invoices_path(:invoice => invoice, format: 'pdf'), class: "btn btn-outline-dark btn-sm" %></td>
+        </div>
       </tr>
     <% end %>
   </tbody>
@@ -29,4 +32,5 @@
 
 <br>
 
-<%= link_to 'New Invoice', new_invoice_path %>
+<%= link_to 'New Invoice', new_invoice_path, :class => "btn btn-dark" %>
+</div>

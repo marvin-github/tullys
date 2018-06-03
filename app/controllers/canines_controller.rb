@@ -30,7 +30,7 @@ class CaninesController < ApplicationController
 
     respond_to do |format|
       if @canine.save
-        format.html { redirect_to @canine, notice: 'Canine was successfully created.' }
+        format.html { redirect_to action: 'index', notice: 'Canine was successfully created.' }
         format.json { render :show, status: :created, location: @canine }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class CaninesController < ApplicationController
   def update
     respond_to do |format|
       if @canine.update(canine_params)
-        format.html { redirect_to @canine, notice: 'Canine was successfully updated.' }
+        format.html { redirect_to action: 'index', notice: 'Canine was successfully updated.' }
         format.json { render :show, status: :ok, location: @canine }
       else
         format.html { render :edit }

@@ -116,6 +116,6 @@
 
 
 
-<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
-<%= link_to 'Back', invoices_path %> |
-<%= link_to 'Print', display_pdf_invoices_path(:invoice => @invoice, format: 'pdf') %>
+<%= link_to 'Edit', edit_invoice_path(@invoice), :class => "btn btn-link" %> |
+<%= link_to 'Back', invoices_path, :class => "btn btn-link" %> |
+<%= link_to 'Print', display_pdf_invoices_path(:invoice => @invoice, format: 'pdf'), :class => "btn btn-link" %>

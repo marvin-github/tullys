@@ -15,7 +15,7 @@
 
 
   <div class="container-fluid">
-    <div style="background-color:lightblue">
+    <div style="background-color:lightgray">
     <br>
 
 
@@ -53,7 +53,7 @@
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
           <%= form.label :invoice_status_id %>
-                    <%= form.collection_select(:invoice_status_id, InvoiceStatus.all, :id, :name,  {:include_blank => true}, {:class => 'form-control'}) %>
+          <%= form.collection_select(:invoice_status_id, InvoiceStatus.all, :id, :name,  {:include_blank => true}, {:class => 'form-control'}) %>
           <div class="col-sm-3"></div>
         </div>
       </div>

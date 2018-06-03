@@ -13,10 +13,15 @@
 
   <div class="container-fluid">
     <div class="form-group">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-control-sm"  %>
+    </div>
+
+    <div class="form-group">
       <%= form.label :arrival_date %>
       <%= form.text_field :arrival_date, id: :litter_arrival_date, data:{ provide:'datepicker' }, class: "form-control-sm"  %>
     </div>
-  
+
     <div class="form-group">
       <%= form.label :available_date %>
       <%= form.text_field :available_date, id: :litter_available_date, data:{ provide:'datepicker' }, class: "form-control-sm" %>

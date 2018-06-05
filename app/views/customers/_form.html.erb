@@ -1,3 +1,4 @@
+<div style="background-color:lightgray">
 <%= form_with(model: customer, local: true) do |form| %>
   <% if customer.errors.any? %>
     <div id="error_explanation">
@@ -10,61 +11,95 @@
       </ul>
     </div>
   <% end %>
+  <div class="container-fluid">
 
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name, id: :customer_first_name %>
-  </div>
+  <br>
+  <!--*** INFO ***     -->
+  <h2 align="center"> Customer Info</h2>
+  <br>
 
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name, id: :customer_last_name %>
-  </div>
+  <div class="row" >
+    <div class="col-sm-3"></div>
+    <div class="col-sm-3">
+      <%= form.label :first_name %>
+      <%= form.text_field :first_name, id: :customer_first_name, class: "form-control" %>
+    </div>
+
+    <div class="col-sm-3">
+      <%= form.label :last_name %>
+      <%= form.text_field :last_name, id: :customer_last_name, class: "form-control" %>
+    </div>
+    <div class="col-sm-3"></div>
+  </div><br>
 
 
-
-  <div class="field">
+  <div class="row" >
+    <div class="col-sm-3"></div>
+    <div class="col-sm-3">
     <%= form.label :address1 %>
-    <%= form.text_field :address1, id: :customer_address1 %>
+    <%= form.text_field :address1, id: :customer_address1, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :address2 %>
-    <%= form.text_field :address2, id: :customer_address2 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :city %>
-    <%= form.text_field :city, id: :customer_city %>
-  </div>
-
-  <div class="field">
-    <%= form.label :state %>
-    <%= form.text_field :state, id: :customer_state %>
-  </div>
-
-  <div class="field">
-    <%= form.label :zip %>
-    <%= form.text_field :zip, id: :customer_zip %>
-  </div>
-
-  <div class="field">
-    <%= form.label :mobile_phone %>
-    <%= form.text_field :mobile_phone, id: :customer_mobile_phone, placeholder: 'xxx-xxx-xxxx' %>
-  </div>
-
-  <div class="field">
-    <%= form.label :home_phone %>
-    <%= form.text_field :home_phone, id: :customer_home_phone, placeholder: 'xxx-xxx-xxxx' %>
-  </div>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email, id: :customer_email %>
-  </div>
+    <div class="col-sm-3">
+      <%= form.label :address2 %>
+      <%= form.text_field :address2, id: :customer_address2, class: "form-control" %>
+    </div>
+    <div class="col-sm-3"></div>
+  </div><br>
 
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <div class="row" >
+    <div class="col-sm-3"></div>
+    <div class="col-sm-3">
+      <%= form.label :city %>
+      <%= form.text_field :city, id: :customer_city, class: "form-control" %>
+    </div>
+
+    <div class="col-sm-1">
+      <%= form.label :state %>
+      <%= form.text_field :state, id: :customer_state, class: "form-control" %>
+    </div>
+
+    <div class="col-sm-2">
+      <%= form.label :zip %>
+      <%= form.text_field :zip, id: :customer_zip, class: "form-control" %>
+    </div>
+  </div><br>
+
+
+  <div class="row" >
+    <div class="col-sm-3"></div>
+    <div class="col-sm-3">
+      <%= form.label :mobile_phone %>
+      <%= form.text_field :mobile_phone, id: :customer_mobile_phone, placeholder: '000-000-0000', class: "form-control" %>
+    </div>
+
+    <div class="col-sm-3">
+      <%= form.label :home_phone %>
+      <%= form.text_field :home_phone, id: :customer_home_phone, placeholder: '000-000-0000', class: "form-control" %>
+    </div>
+    <div class="col-sm-3"></div>
+  </div><br>
+
+  <div class="row" >
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+      <%= form.label :email %>
+      <%= form.text_field :email, id: :customer_email, class: "form-control" %>
+    </div>
+    <div class="col-sm-3"></div>
+  </div><br>
+
+  <div class="row">
+    <div class="col-sm-5"></div>
+    <div class="col-sm-1">
+      <div class="actions">
+        <%= form.submit :class => "btn btn-dark" %>
+      </div>
+    </div>
+  </div><br>
+
+
 <% end %>
+</div>
+</div>

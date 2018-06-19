@@ -69,6 +69,6 @@ class SalesPlansController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sales_plan_params
-      params.require(:sales_plan).permit(:start_date, :end_date, :variable_percent, :variable_percent, :flat_percent, :flat_percent, :flat_amount, :flat_amount, :max_amount, :max_amount)
+      params.require(:sales_plan).permit(:start_date, :end_date, :variable_percent, :flat_percent, :flat_amount, :max_amount, :name)
     end
 end

@@ -1,3 +1,4 @@
+<div style="background-color:lightgray">
 <%= form_with(model: broker, local: true) do |form| %>
   <% if broker.errors.any? %>
     <div id="error_explanation">
@@ -10,63 +11,99 @@
       </ul>
     </div>
   <% end %>
+  <div class="container-fluid">
 
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name, id: :broker_first_name %>
-  </div>
+    <br>
+    <!--*** INFO ***     -->
 
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name, id: :broker_last_name %>
-  </div>
+    <h2 align="center"> Broker Info</h2>
+    <br>
 
-  <div class="field">
-    <%= form.label :company_name %>
-    <%= form.text_field :company_name, id: :broker_company_name %>
-  </div>
+    <div class="row" >
+      <div class="col-sm-3"></div>
+      <div class="col-sm-6">
+        <%= form.label :company_name %>
+        <%= form.text_field :company_name, id: :broker_company_name, class: "form-control" %>
+      </div>
+      <div class="col-sm-3"></div>
+    </div><br>
 
-  <div class="field">
-    <%= form.label :address1 %>
-    <%= form.text_field :address1, id: :broker_address1 %>
-  </div>
+    <div class="row" >
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+        <%= form.label :first_name %>
+        <%= form.text_field :first_name, id: :broker_first_name, class: "form-control" %>
+      </div>
 
-  <div class="field">
-    <%= form.label :address2 %>
-    <%= form.text_field :address2, id: :broker_address2 %>
-  </div>
+      <div class="col-sm-3">
+        <%= form.label :last_name %>
+        <%= form.text_field :last_name, id: :broker_last_name, class: "form-control" %>
+      </div>
+      <div class="col-sm-3"></div>
+    </div><br>
 
-  <div class="field">
-    <%= form.label :city %>
-    <%= form.text_field :city, id: :broker_city %>
-  </div>
+    <div class="row" >
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+        <%= form.label :address1 %>
+        <%= form.text_field :address1, id: :broker_address1, class: "form-control" %>
+      </div>
 
-  <div class="field">
-    <%= form.label :state %>
-    <%= form.text_field :state, id: :broker_state %>
-  </div>
+      <div class="col-sm-3">
+        <%= form.label :address2 %>
+        <%= form.text_field :address2, id: :broker_address2, class: "form-control" %>
+      </div>
+    </div><br>
 
-  <div class="field">
-    <%= form.label :zip %>
-    <%= form.text_field :zip, id: :broker_zip %>
-  </div>
+    <div class="row" >
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+        <%= form.label :city %>
+        <%= form.text_field :city, id: :broker_city, class: "form-control" %>
+      </div>
 
-  <div class="field">
-    <%= form.label :mobile_phone %>
-    <%= form.text_field :mobile_phone, id: :broker_mobile_phone %>
-  </div>
+      <div class="col-sm-1">
+        <%= form.label :state %>
+        <%= form.text_field :state, id: :broker_state, class: "form-control" %>
+      </div>
 
-  <div class="field">
-    <%= form.label :work_phone %>
-    <%= form.text_field :home_phone, id: :broker_home_phone %>
-  </div>
+      <div class="col-sm-2">
+        <%= form.label :zip %>
+        <%= form.text_field :zip, id: :broker_zip, class: "form-control" %>
+      </div>
+    </div><br>
 
-  <div class="field">
-    <%= form.label :fax %>
-    <%= form.text_field :fax, id: :broker_fax %>
-  </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="row" >
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+        <%= form.label :mobile_phone %>
+        <%= form.text_field :mobile_phone, id: :broker_mobile_phone, class: "form-control" %>
+      </div>
+
+      <div class="col-sm-3">
+        <%= form.label :work_phone %>
+        <%= form.text_field :home_phone, id: :broker_home_phone, class: "form-control" %>
+      </div>
+      <div class="col-sm-3"></div>
+    </div>
+
+
+    <div class="row" >
+      <div class="col-sm-3"></div>
+      <div class="col-sm-6">
+        <%= form.label :fax %>
+        <%= form.text_field :fax, id: :broker_fax, class: "form-control" %>
+      </div>
+      <div class="col-sm-3"></div>
+    </div><br>
+
+    <div align="center">
+      <div class="actions" >
+        <%= form.submit :class => "btn btn-dark" %>
+      </div>
+    </div><br>
+
 <% end %>
+</div>
+</div>

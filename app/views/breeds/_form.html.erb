@@ -1,22 +1,35 @@
-<%= form_with(model: breed, local: true) do |form| %>
-  <% if breed.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(breed.errors.count, "error") %> prohibited this breed from being saved:</h2>
+<div style="background-color:lightgray">
+  <%= form_with(model: breed, local: true) do |form| %>
+    <% if breed.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(breed.errors.count, "error") %> prohibited this breed from being saved:</h2>
 
-      <ul>
-      <% breed.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+        <ul>
+        <% breed.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="container-fluid">
+      <br>
+      <!--*** INFO ***     -->
+      <div class="row" >
+        <div class="col-sm-3"></div>
+          <div class="col-sm-6">
+            <%= form.label :name %>
+            <%= form.text_field :name, id: :breed_name, class: "form-control" %>
+          </div>
+        <div class="col-sm-3"></div>
+      </div><br>
+
+
+    <div align="center">
+      <div class="actions" >
+        <%= form.submit :class => "btn btn-dark" %>
+      </div>
+    </div><br>
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :breed_name %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

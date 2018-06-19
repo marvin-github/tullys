@@ -64,6 +64,7 @@
       <%= form.label :zip %>
       <%= form.text_field :zip, id: :customer_zip, class: "form-control" %>
     </div>
+    <div class="col-sm-3"></div>
   </div><br>
 
 
@@ -90,14 +91,11 @@
     <div class="col-sm-3"></div>
   </div><br>
 
-  <div class="row">
-    <div class="col-sm-5"></div>
-    <div class="col-sm-1">
-      <div class="actions">
+    <div align="center">
+      <div class="actions" >
         <%= form.submit :class => "btn btn-dark" %>
       </div>
-    </div>
-  </div><br>
+    </div><br>
 
 
 <% end %>

@@ -1,3 +1,4 @@
+<div style="background-color:lightgray">
 <%= form_with(model: weight_category, local: true) do |form| %>
   <% if weight_category.errors.any? %>
     <div id="error_explanation">
@@ -30,3 +31,4 @@
     <%= form.submit %>
   </div>
 <% end %>
+</div>

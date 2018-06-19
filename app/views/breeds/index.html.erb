@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Breeds</h1>
-
+<div class="container-fluid">
 <table class="table table-striped">
   <thead>
     <tr>
@@ -14,9 +14,9 @@
     <% @breeds.each do |breed| %>
       <tr>
         <td><%= breed.name %></td>
-        <td><%= link_to 'Show', breed %></td>
-        <td><%= link_to 'Edit', edit_breed_path(breed) %></td>
-        <td><%= link_to 'Destroy', breed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', breed, class: "btn btn-outline-dark btn-sm" %></td>
+        <td><%= link_to 'Edit', edit_breed_path(breed), class: "btn btn-outline-dark btn-sm" %></td>
+        <!--<td><%= link_to 'Destroy', breed, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,5 @@
 
 <br>
 
-<%= link_to 'New Breed', new_breed_path %>
+<%= link_to 'New Breed', new_breed_path, :class => "btn btn-dark" %>
+</div>

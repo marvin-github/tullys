@@ -1,3 +1,4 @@
+<div style="background-color:lightgray">
 <%= form_with(model: breeder, local: true) do |form| %>
   <% if breeder.errors.any? %>
     <div id="error_explanation">
@@ -11,67 +12,104 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name, id: :breeder_first_name %>
-  </div>
+  <div class="container-fluid">
 
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name, id: :breeder_last_name %>
-  </div>
+    <br>
+    <!--*** INFO ***     -->
 
-  <div class="field">
-    <%= form.label :company_name %>
-    <%= form.text_field :company_name, id: :breeder_company_name %>
-  </div>
+    <h2 align="center"> Breeder Info</h2>
+    <br>
+    <div class="row" >
+      <div class="col-sm-3"></div>
+      <div class="col-sm-6">
+        <%= form.label :company_name %>
+        <%= form.text_field :company_name, id: :breeder_company_name, class: "form-control" %>
+      </div>
+      <div class="col-sm-3"></div>
+    </div><br>
 
-  <div class="field">
-    <%= form.label :address1 %>
-    <%= form.text_field :address1, id: :breeder_address1 %>
-  </div>
 
-  <div class="field">
-    <%= form.label :address2 %>
-    <%= form.text_field :address2, id: :breeder_address2 %>
-  </div>
+    <div class="row" >
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+        <%= form.label :first_name %>
+        <%= form.text_field :first_name, id: :breeder_first_name, class: "form-control" %>
+      </div>
 
-  <div class="field">
-    <%= form.label :city %>
-    <%= form.text_field :city, id: :breeder_city %>
-  </div>
+      <div class="col-sm-3">
+        <%= form.label :last_name %>
+        <%= form.text_field :last_name, id: :breeder_last_name, class: "form-control" %>
+      </div>
+      <div class="col-sm-3"></div>
+    </div><br>
 
-  <div class="field">
-    <%= form.label :state %>
-    <%= form.text_field :state, id: :breeder_state %>
-  </div>
 
-  <div class="field">
-    <%= form.label :zip %>
-    <%= form.text_field :zip, id: :breeder_zip %>
-  </div>
+    <div class="row" >
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+        <%= form.label :address1 %>
+        <%= form.text_field :address1, id: :breeder_address1, class: "form-control" %>
+      </div>
 
-  <div class="field">
-    <%= form.label :mobile_phone %>
-    <%= form.text_field :mobile_phone, id: :breeder_mobile_phone %>
-  </div>
+      <div class="col-sm-3">
+        <%= form.label :address2 %>
+        <%= form.text_field :address2, id: :breeder_address2, class: "form-control" %>
+      </div>
+      <div class="col-sm-3"></div>
+    </div><br>
 
-  <div class="field">
-    <%= form.label :work_phone %>
-    <%= form.text_field :home_phone, id: :breeder_home_phone %>
-  </div>
+    <div class="row" >
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+        <%= form.label :city %>
+        <%= form.text_field :city, id: :breeder_city, class: "form-control" %>
+      </div>
 
-  <div class="field">
-    <%= form.label :fax %>
-    <%= form.text_field :fax, id: :breeder_fax %>
-  </div>
+      <div class="col-sm-1">
+        <%= form.label :state %>
+        <%= form.text_field :state, id: :breeder_state, class: "form-control" %>
+      </div>
 
-  <div class="field">
-    <%= form.label :usda_number %>
-    <%= form.text_field :usda_number, id: :breeder_usda_number %>
-  </div>
+      <div class="col-sm-2">
+        <%= form.label :zip %>
+        <%= form.text_field :zip, id: :breeder_zip, class: "form-control" %>
+      </div>
+      <div class="col-sm-3"></div>
+    </div><br>
 
-  <div class="actions">
-    <%= form.submit %>
+    <div class="row" >
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+        <%= form.label :mobile_phone %>
+        <%= form.text_field :mobile_phone, id: :breeder_mobile_phone, class: "form-control" %>
+      </div>
+
+      <div class="col-sm-3">
+        <%= form.label :work_phone %>
+        <%= form.text_field :home_phone, id: :breeder_home_phone, class: "form-control" %>
+      </div>
+      <div class="col-sm-3"></div>
+    </div><br>
+
+    <div class="row" >
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+        <%= form.label :fax %>
+        <%= form.text_field :fax, id: :breeder_fax, class: "form-control" %>
+      </div>
+
+      <div class="col-sm-3">
+        <%= form.label :usda_number %>
+        <%= form.text_field :usda_number, id: :breeder_usda_number, class: "form-control" %>
+      </div>
+      <div class="col-sm-3"></div>
+    </div><br>
+
+  <div align="center">
+    <div class="actions" >
+      <%= form.submit :class => "btn btn-dark" %>
+    </div>
+  </div><br>
   </div>
 <% end %>
+</div>

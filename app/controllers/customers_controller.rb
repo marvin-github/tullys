@@ -7,7 +7,7 @@ class CustomersController < ApplicationController
     if !params[:phone].blank?
       @customers = Customer.where("home_phone = ? or mobile_phone = ?", params[:phone], params[:phone])
     else
-      @customers = Customer.all
+      @customers = Customer.all.order(last_name: :asc)
     end
   end
 

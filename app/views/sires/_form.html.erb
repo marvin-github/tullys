@@ -1,3 +1,4 @@
+<div style="background-color:lightgray">
 <%= form_with(model: sire, local: true) do |form| %>
   <% if sire.errors.any? %>
     <div id="error_explanation">
@@ -36,3 +37,4 @@
     <%= form.submit %>
   </div>
 <% end %>
+</div>

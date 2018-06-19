@@ -1,3 +1,4 @@
+<div style="background-color:lightgray">
 <%= form_with(model: sales_plan, local: true) do |form| %>
   <% if sales_plan.errors.any? %>
     <div id="error_explanation">
@@ -31,15 +32,6 @@
     <%= form.text_field :variable_percent, id: :sales_plan_variable_percent %>
   </div>
 
-  <div class="field">
-    <%= form.label :variable_percent %>
-    <%= form.text_field :variable_percent, id: :sales_plan_variable_percent %>
-  </div>
-
-  <div class="field">
-    <%= form.label :flat_percent %>
-    <%= form.text_field :flat_percent, id: :sales_plan_flat_percent %>
-  </div>
 
   <div class="field">
     <%= form.label :flat_percent %>
@@ -51,22 +43,16 @@
     <%= form.text_field :flat_amount, id: :sales_plan_flat_amount %>
   </div>
 
-  <div class="field">
-    <%= form.label :flat_amount %>
-    <%= form.text_field :flat_amount, id: :sales_plan_flat_amount %>
-  </div>
 
   <div class="field">
     <%= form.label :max_amount %>
     <%= form.text_field :max_amount, id: :sales_plan_max_amount %>
   </div>
 
-  <div class="field">
-    <%= form.label :max_amount %>
-    <%= form.text_field :max_amount, id: :sales_plan_max_amount %>
-  </div>
+
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+</div>

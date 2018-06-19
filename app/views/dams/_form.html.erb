@@ -1,3 +1,4 @@
+<div style="background-color:lightgray">
 <%= form_with(model: dam, local: true) do |form| %>
   <% if dam.errors.any? %>
     <div id="error_explanation">
@@ -36,3 +37,4 @@
     <%= form.submit %>
   </div>
 <% end %>
+</div>

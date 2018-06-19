@@ -1,3 +1,4 @@
+<div style="background-color:lightgray">
 <%= form_with(model: veterinarian, local: true) do |form| %>
   <% if veterinarian.errors.any? %>
     <div id="error_explanation">
@@ -10,56 +11,80 @@
       </ul>
     </div>
   <% end %>
+  <div class="container-fluid">
+    <br>
+    <h2 align="center"> Veterinarian Info</h2>
+    <br>
+    <div class="row" >
+      <div class="col-sm-3"></div>
+      <div class="col-sm-6">
+        <%= form.label :company_name %>
+        <%= form.text_field :company_name, id: :veterinarian_company_name, class: "form-control" %>
+      </div>
+      <div class="col-sm-3"></div>
+    </div><br>
 
+    <div class="row" >
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+        <%= form.label :address1 %>
+        <%= form.text_field :address1, id: :veterinarian_address1, class: "form-control" %>
+      </div>
+      <div class="col-sm-3">
+        <%= form.label :address2 %>
+        <%= form.text_field :address2, id: :veterinarian_address2, class: "form-control" %>
+      </div>
+        <div class="col-sm-3"></div>
+    </div><br>
 
-  <div class="field">
-    <%= form.label :company_name %>
-    <%= form.text_field :company_name, id: :veterinarian_company_name %>
-  </div>
+    <div class="row" >
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+        <%= form.label :city %>
+        <%= form.text_field :city, id: :veterinarian_city, class: "form-control" %>
+      </div>
 
-  <div class="field">
-    <%= form.label :address1 %>
-    <%= form.text_field :address1, id: :veterinarian_address1 %>
-  </div>
+      <div class="col-sm-1">
+        <%= form.label :state %>
+        <%= form.text_field :state, id: :veterinarian_state, class: "form-control" %>
+      </div>
 
-  <div class="field">
-    <%= form.label :address2 %>
-    <%= form.text_field :address2, id: :veterinarian_address2 %>
-  </div>
+      <div class="col-sm-2">
+        <%= form.label :zip %>
+        <%= form.text_field :zip, id: :veterinarian_zip, class: "form-control" %>
+      </div>
+      <div class="col-sm-3"></div>
+    </div><br>
 
-  <div class="field">
-    <%= form.label :city %>
-    <%= form.text_field :city, id: :veterinarian_city %>
-  </div>
+    <div class="row" >
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+        <%= form.label :work_phone %>
+        <%= form.text_field :home_phone, id: :veterinarian_home_phone, class: "form-control" %>
+      </div>
 
-  <div class="field">
-    <%= form.label :state %>
-    <%= form.text_field :state, id: :veterinarian_state %>
-  </div>
+      <div class="col-sm-3">
+        <%= form.label :fax %>
+        <%= form.text_field :fax, id: :veterinarian_fax, class: "form-control" %>
+      </div>
+      <div class="col-sm-3"></div>
+    </div><br>
 
-  <div class="field">
-    <%= form.label :zip %>
-    <%= form.text_field :zip, id: :veterinarian_zip %>
-  </div>
+    <div class="row" >
+      <div class="col-sm-3"></div>
+      <div class="col-sm-6">
+        <%= form.label :business_hours %>
+        <%= form.text_field :business_hours, id: :veterinarian_business_hours, class: "form-control" %>
+      </div>
+      <div class="col-sm-3"></div>
+    </div><br><br>
 
+    <div align="center">
+      <div class="actions" >
+        <%= form.submit :class => "btn btn-dark" %>
+      </div>
+    </div><br>
 
-
-  <div class="field">
-    <%= form.label :work_phone %>
-    <%= form.text_field :home_phone, id: :veterinarian_home_phone %>
-  </div>
-
-  <div class="field">
-    <%= form.label :fax %>
-    <%= form.text_field :fax, id: :veterinarian_fax %>
-  </div>
-
-  <div class="field">
-    <%= form.label :business_hours %>
-    <%= form.text_field :business_hours, id: :veterinarian_business_hours %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
+</div>
+</div>

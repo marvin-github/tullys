@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Breeders</h1>
-
+<div class="container-fluid">
 <table class="table table-striped">
   <thead>
   <tr>
@@ -20,9 +20,9 @@
         <td><%= breeder.first_name %></td>
         <td><%= breeder.company_name %></td>
         <td><%= breeder.home_phone %></td>
-        <td><%= link_to 'Show', breeder %></td>
-        <td><%= link_to 'Edit', edit_breeder_path(breeder) %></td>
-        <td><%= link_to 'Destroy', breeder, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', breeder, class: "btn btn-outline-dark btn-sm" %></td>
+        <td><%= link_to 'Edit', edit_breeder_path(breeder), class: "btn btn-outline-dark btn-sm" %></td>
+        <!--<td><%= link_to 'Destroy', breeder, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,5 @@
 
 <br>
 
-<%= link_to 'New Breeder', new_breeder_path %>
+<%= link_to 'New Breeder', new_breeder_path, :class => "btn btn-dark" %>
+</div>

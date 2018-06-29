@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Treatment Types</h1>
-
+<div class="container-fluid">
 <table class="table table-striped">
   <thead>
     <tr>
@@ -15,9 +15,9 @@
       <tr>
         <td><%= treatment_type.name %></td>
         <td><%= treatment_type.category %></td>
-        <td><%= link_to 'Show', treatment_type %></td>
-        <td><%= link_to 'Edit', edit_treatment_type_path(treatment_type) %></td>
-        <td><%= link_to 'Destroy', treatment_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', treatment_type, class: "btn btn-outline-dark btn-sm" %></td>
+        <td><%= link_to 'Edit', edit_treatment_type_path(treatment_type), class: "btn btn-outline-dark btn-sm" %></td>
+        <!--<td><%= link_to 'Destroy', treatment_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
       </tr>
     <% end %>
   </tbody>
@@ -25,4 +25,5 @@
 
 <br>
 
-<%= link_to 'New Treatment Type', new_treatment_type_path %>
+<%= link_to 'New Treatment Type', new_treatment_type_path, :class => "btn btn-dark" %>
+</div>

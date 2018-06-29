@@ -1,25 +1,21 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Dams</h1>
-
+<div class="container-fluid">
 <table class="table table-striped">
   <thead>
   <tr>
-      <th>Name</th>
-      <th>Breed</th>
-      <th>Breeder</th>
-    </tr>
+      <th>Registration Number</th>
+  </tr>
   </thead>
 
   <tbody>
     <% @dams.each do |dam| %>
       <tr>
-        <td><%= dam.name %></td>
-        <td><%= dam.breed.name %></td>
-        <td><%= dam.breeder.company_name %></td>
-        <td><%= link_to 'Show', dam %></td>
-        <td><%= link_to 'Edit', edit_dam_path(dam) %></td>
-        <td><%= link_to 'Destroy', dam, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= dam.registration_number %></td>
+        <td><%= link_to 'Show', dam, class: "btn btn-outline-dark btn-sm" %>
+        <td><%= link_to 'Edit', edit_dam_path(dam), class: "btn btn-outline-dark btn-sm" %>
+        <!--<td><%= link_to 'Destroy', dam, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
       </tr>
     <% end %>
   </tbody>
@@ -27,4 +23,5 @@
 
 <br>
 
-<%= link_to 'New Dam', new_dam_path %>
+<%= link_to 'New Dam', new_dam_path, :class => "btn btn-dark" %>
+</div>

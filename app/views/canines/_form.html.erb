@@ -20,7 +20,7 @@
 
       -->
 
-      <h2 align="center"> Section A</h2>
+      <h2 align="center"> Description</h2>
       <br>
 
       <div class="row" >
@@ -69,7 +69,7 @@
       </div><br>
       <hr><br>
 
-      <h2 align="center"> Section B</h2>
+      <h2 align="center"> Price</h2>
       <br>
 
       <div class="row" >
@@ -126,22 +126,26 @@
       <br>
 
       <hr><br>
-      <h2 align="center"> Section C</h2>
+      <h2 align="center"> Status</h2>
       <br>
 
       <div class="row">
         <div class="col-sm-3"></div>
-        <div class="col-sm-3">
+        <div class="col-sm-6">
           <%= form.label :sale_status_id %>
           <%= form.collection_select(:sale_status_id, SaleStatus.all, :id, :name, {:include_blank => true}, {:class => 'form-control'}) %>
         </div>
+        <div class="col-sm-3"></div>
+      </div><br>
 
-        <div class="col-sm-3">
-          <%= form.label :on_hold_reason %>
-          <%= form.text_area :on_hold_reason, id: :canine_on_hold_reason, class: "form-control" %>
+        <div class="row">
+          <div class="col-sm-3"></div>
+          <div class="col-sm-6">
+            <%= form.label :on_hold_reason %>
+            <%= form.text_area :on_hold_reason, id: :canine_on_hold_reason, class: "form-control" %>
         </div>
         <div class="col-sm-3"></div>
-      </div>
+      </div><br>
 
   <div class="row">
     <div class="col-sm-3"></div>
@@ -159,6 +163,10 @@
   <br>
 
 
+  <hr><br>
+  <h2 align="center"> Treatments</h2>
+  <br>
+
   <%= form.nested_fields_for :treatments do |ff| %>
     <div class="row">
       <div class="col-sm-3"></div>
@@ -170,8 +178,9 @@
       <div class="col-sm-1" >
         <%= ff.label :Action %>
         <%= ff.remove_nested_fields_link 'Delete',  :class => "btn btn-outline-dark btn-sm"  %>
-      </div>
+      </div><br>
   <% end %>
+
     </div>
     <br>
   <div class="row">
@@ -186,12 +195,9 @@
 
   <br>
 
-  <div class="row">
-    <div class="col-sm-5"></div>
-    <div class="col-sm-1">
-      <div class="actions">
-        <%= form.submit :class => "btn btn-dark" %>
-      </div>
+  <div align="center">
+    <div class="actions" >
+      <%= form.submit :class => "btn btn-dark" %>
     </div>
   </div><br>
 

@@ -1,3 +1,4 @@
+
 <div style="background-color:lightgray">
 <%= form_with(model: sales_plan, local: true) do |form| %>
   <% if sales_plan.errors.any? %>
@@ -12,47 +13,64 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :sales_plan_name %>
-  </div>
 
-  <div class="field">
-    <%= form.label :start_date %>
-    <%= form.date_select :start_date, id: :sales_plan_start_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :end_date %>
-    <%= form.date_select :end_date, id: :sales_plan_end_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :variable_percent %>
-    <%= form.text_field :variable_percent, id: :sales_plan_variable_percent %>
-  </div>
+  <div class="container-fluid"><br>
+    <h2 align="center"> Sale Plan</h2><br>
+    <div class="row" >
+      <div class="col-sm-3"></div>
+      <div class="col-sm-6">
+        <%= form.label :name %>
+        <%= form.text_field :name, id: :sales_plan_name, class: "form-control"  %>
+      </div>
+      <div class="col-sm-3"></div>
+    </div><br>
 
 
-  <div class="field">
-    <%= form.label :flat_percent %>
-    <%= form.text_field :flat_percent, id: :sales_plan_flat_percent %>
-  </div>
+    <div class="row" >
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+        <%= form.label :start_date %>
+        <%= form.text_field :start_date, id: :sales_plan_start_date,  data: {provide: 'datepicker'}, class: 'form-control' %>
+      </div>
+      <div class="col-sm-3">
+        <%= form.label :end_date %>
+        <%= form.text_field :end_date, id: :sales_plan_end_date,  data: {provide: 'datepicker'}, class: 'form-control' %>
+      </div>
+      <div class="col-sm-3"></div>
+    </div><br>
 
-  <div class="field">
-    <%= form.label :flat_amount %>
-    <%= form.text_field :flat_amount, id: :sales_plan_flat_amount %>
-  </div>
+    <div class="row" >
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+        <%= form.label :variable_percent %>
+        <%= form.text_field :variable_percent, id: :sales_plan_variable_percent, class: 'form-control' %>
+      </div>
+      <div class="col-sm-3">
+        <%= form.label :flat_percent %>
+        <%= form.text_field :flat_percent, id: :sales_plan_flat_percent, class: 'form-control' %>
+      </div>
+      <div class="col-sm-3"></div>
+    </div><br>
 
 
-  <div class="field">
-    <%= form.label :max_amount %>
-    <%= form.text_field :max_amount, id: :sales_plan_max_amount %>
-  </div>
+    <div class="row" >
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+        <%= form.label :flat_amount %>
+        <%= form.text_field :flat_amount, id: :sales_plan_flat_amount, class: 'form-control' %>
+      </div>
+      <div class="col-sm-3">
+        <%= form.label :max_amount %>
+        <%= form.text_field :max_amount, id: :sales_plan_max_amount, class: 'form-control' %>
+      </div>
+      <div class="col-sm-3"></div>
+    </div><br>
 
-
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div align="center">
+      <div class="actions" >
+        <%= form.submit :class => "btn btn-dark" %>
+      </div>
+    </div><br>
 <% end %>
+</div>
 </div>

@@ -4,7 +4,7 @@ class SiresController < ApplicationController
   # GET /sires
   # GET /sires.json
   def index
-    @sires = Sire.all
+    @sires = Sire.all.order(registration_number: :asc)
   end
 
   # GET /sires/1

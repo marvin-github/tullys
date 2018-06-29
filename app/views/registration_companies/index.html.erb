@@ -1,26 +1,26 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Registration Companies</h1>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Company name</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @registration_companies.each do |registration_company| %>
+<div class="container-fluid">
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= registration_company.company_name %></td>
-        <td><%= link_to 'Show', registration_company %></td>
-        <td><%= link_to 'Edit', edit_registration_company_path(registration_company) %></td>
-        <td><%= link_to 'Destroy', registration_company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Company name</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
+    <tbody>
+      <% @registration_companies.each do |registration_company| %>
+        <tr>
+          <td><%= registration_company.company_name %></td>
+          <td><%= link_to 'Show', registration_company, class: "btn btn-outline-dark btn-sm" %></td>
+          <td><%= link_to 'Edit', edit_registration_company_path(registration_company), class: "btn btn-outline-dark btn-sm" %></td>
+          <!--<td><%= link_to 'Destroy', registration_company, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 <br>
 
-<%= link_to 'New Registration Company', new_registration_company_path %>
+<%= link_to 'New Registration Company', new_registration_company_path, :class => "btn btn-dark" %>

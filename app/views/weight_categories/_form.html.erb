@@ -12,23 +12,38 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :weight_category_name %>
-  </div>
+  <div class="container-fluid">
+    <br>
+    <h2 align="center"> Weight Category</h2>
+    <br>
+    <div class="row" >
+      <div class="col-sm-3"></div>
+      <div class="col-sm-6">
+        <%= form.label :name %>
+        <%= form.text_field :name, id: :weight_category_name, class: "form-control"  %>
+      </div>
+      <div class="col-sm-3"></div>
+  </div><br>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description, id: :weight_category_description %>
-  </div>
+  <div class="row" >
+    <div class="col-sm-3"></div>
+    <div class="col-sm-3">
+      <%= form.label :description %>
+      <%= form.text_field :description, id: :weight_category_description, class: "form-control"  %>
+    </div>
 
-  <div class="field">
-    <%= form.label :require_sale_weight %>
-    <%= form.text_field :require_sale_weight, id: :weight_category_require_sale_weight %>
-  </div>
+    <div class="col-sm-3">
+      <%= form.label :require_sale_weight %>
+      <%= form.text_field :require_sale_weight, id: :weight_category_require_sale_weight, class: "form-control"  %>
+    </div>
+    <div class="col-sm-3"></div>
+  </div><br>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div align="center">
+    <div class="actions" >
+      <%= form.submit :class => "btn btn-dark" %>
+    </div>
+  </div><br>
   </div>
-<% end %>
+  <% end %>
 </div>

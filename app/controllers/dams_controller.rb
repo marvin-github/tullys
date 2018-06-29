@@ -4,7 +4,7 @@ class DamsController < ApplicationController
   # GET /dams
   # GET /dams.json
   def index
-    @dams = Dam.all
+    @dams = Dam.all.order(registration_number: :asc)
   end
 
   # GET /dams/1

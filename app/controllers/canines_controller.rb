@@ -4,7 +4,7 @@ class CaninesController < ApplicationController
   # GET /canines
   # GET /canines.json
   def index
-    @canines = Canine.all
+    @canines = Canine.all.order(micro_chip_number: :asc)
   end
 
   # GET /canines/1

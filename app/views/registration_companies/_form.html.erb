@@ -12,63 +12,92 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name, id: :registration_company_first_name %>
-  </div>
+  <div class="container-fluid">
+    <br>
+    <h2 align="center"> Registration Company</h2>
+    <br>
 
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name, id: :registration_company_last_name %>
-  </div>
+    <div class="row" >
+      <div class="col-sm-3"></div>
+      <div class="col-sm-6">
+        <%= form.label :company_name %>
+        <%= form.text_field :company_name, id: :registration_company_company_name, class: "form-control"  %>
+      </div>
+      <div class="col-sm-3"></div>
+    </div><br>
 
-  <div class="field">
-    <%= form.label :company_name %>
-    <%= form.text_field :company_name, id: :registration_company_company_name %>
-  </div>
+    <div class="row" >
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+        <%= form.label :first_name %>
+        <%= form.text_field :first_name, id: :registration_company_first_name, class: "form-control"  %>
+      </div>
+      <div class="col-sm-3">
+        <%= form.label :last_name %>
+        <%= form.text_field :last_name, id: :registration_company_last_name, class: "form-control"  %>
+      </div>
+      <div class="col-sm-3"></div>
+    </div><br>
 
-  <div class="field">
-    <%= form.label :address1 %>
-    <%= form.text_field :address1, id: :registration_company_address1 %>
-  </div>
 
-  <div class="field">
-    <%= form.label :address2 %>
-    <%= form.text_field :address2, id: :registration_company_address2 %>
-  </div>
 
-  <div class="field">
-    <%= form.label :city %>
-    <%= form.text_field :city, id: :registration_company_city %>
-  </div>
+    <div class="row" >
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+        <%= form.label :address1 %>
+        <%= form.text_field :address1, id: :registration_company_address1, class: "form-control"  %>
+      </div>
+      <div class="col-sm-3">
+        <%= form.label :address2 %>
+        <%= form.text_field :address2, id: :registration_company_address2, class: "form-control"  %>
+      </div>
+      <div class="col-sm-3"></div>
+    </div><br>
 
-  <div class="field">
-    <%= form.label :state %>
-    <%= form.text_field :state, id: :registration_company_state %>
-  </div>
+    <div class="row" >
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+        <%= form.label :city %>
+        <%= form.text_field :city, id: :registration_company_city, class: "form-control"  %>
+      </div>
+      <div class="col-sm-1">
+        <%= form.label :state %>
+        <%= form.text_field :state, id: :registration_company_state, class: "form-control"  %>
+      </div>
+      <div class="col-sm-2">
+        <%= form.label :zip %>
+        <%= form.text_field :zip, id: :registration_company_zip, class: "form-control"  %>
+      </div>
+      <div class="col-sm-3"></div>
+    </div><br>
 
-  <div class="field">
-    <%= form.label :zip %>
-    <%= form.text_field :zip, id: :registration_company_zip %>
-  </div>
+    <div class="row" >
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+        <%= form.label :mobile_phone %>
+        <%= form.text_field :mobile_phone, id: :registration_company_mobile_phone, class: "form-control"  %>
+      </div>
+      <div class="col-sm-3">
+        <%= form.label :home_phone %>
+        <%= form.text_field :home_phone, id: :registration_company_home_phone, class: "form-control"  %>
+      </div>
+      <div class="col-sm-3"></div>
+    </div><br>
 
-  <div class="field">
-    <%= form.label :mobile_phone %>
-    <%= form.text_field :mobile_phone, id: :registration_company_mobile_phone %>
-  </div>
+    <div class="row" >
+      <div class="col-sm-3"></div>
+      <div class="col-sm-6">
+        <%= form.label :fax %>
+        <%= form.text_field :fax, id: :registration_company_fax, class: "form-control"  %>
+      </div>
+      <div class="col-sm-3"></div>
+    </div><br>
 
-  <div class="field">
-    <%= form.label :home_phone %>
-    <%= form.text_field :home_phone, id: :registration_company_home_phone %>
-  </div>
-
-  <div class="field">
-    <%= form.label :fax %>
-    <%= form.text_field :fax, id: :registration_company_fax %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div align="center">
+      <div class="actions" >
+        <%= form.submit :class => "btn btn-dark" %>
+      </div>
+    </div><br>
 <% end %>
+</div>
 </div>

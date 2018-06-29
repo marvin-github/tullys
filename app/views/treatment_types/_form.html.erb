@@ -1,29 +1,47 @@
+
 <div style="background-color:lightgray">
-<%= form_with(model: treatment_type, local: true) do |form| %>
-  <% if treatment_type.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(treatment_type.errors.count, "error") %> prohibited this treatment_type from being saved:</h2>
+  <%= form_with(model: treatment_type, local: true) do |form| %>
+    <% if treatment_type.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(treatment_type.errors.count, "error") %> prohibited this treatment_type from being saved:</h2>
 
-      <ul>
-      <% treatment_type.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+        <ul>
+        <% treatment_type.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="container-fluid">
+      <br>
+      <h2 align="center"> Treatment Types</h2>
+      <br>
+      <div class="row" >
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+          <%= form.label :name %>
+          <%= form.text_field :name, id: :treatment_type_name, class: "form-control"  %>
+        </div>
+      <div class="col-sm-3"></div>
+    </div><br>
+
+    <div class="row" >
+      <div class="col-sm-3"></div>
+      <div class="col-sm-6">
+        <%= form.label :category %>
+        <%= form.text_field :category, id: :treatment_type_category, class: "form-control"  %>
+      </div>
+      <div class="col-sm-3"></div>
+    </div><br>
+
+
+    <div align="center">
+      <div class="actions" >
+        <%= form.submit :class => "btn btn-dark" %>
+      </div>
+    </div><br>
+
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :treatment_type_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :category %>
-    <%= form.text_field :category, id: :treatment_type_category %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
 </div>

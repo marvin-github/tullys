@@ -1,31 +1,31 @@
-<p id="notice"><%= notice %></p>
 
+<p id="notice"><%= notice %></p>
 <h1>Veterinarians</h1>
 <div class="container-fluid">
-<table class="table table-striped">
-  <thead>
+  <table class="table table-striped">
+    <thead>
     <tr>
       <th>Company name</th>
       <th>Work phone</th>
       <th>Business hours</th>
-     </tr>
-  </thead>
+    </tr>
+    </thead>
 
-  <tbody>
+    <tbody>
     <% @veterinarians.each do |veterinarian| %>
-      <tr>
-        <td><%= veterinarian.company_name %></td>
-        <td><%= veterinarian.home_phone %></td>
-        <td><%= veterinarian.business_hours %></td>
-        <td><%= link_to 'Show', veterinarian, class: "btn btn-outline-dark btn-sm" %></td> %></td>
-        <td><%= link_to 'Edit', edit_veterinarian_path(veterinarian), class: "btn btn-outline-dark btn-sm" %></td> %></td>
-        <!--<td><%= link_to 'Destroy', veterinarian, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
-      </tr>
+        <tr>
+          <td><%= veterinarian.company_name %></td>
+          <td><%= veterinarian.home_phone %></td>
+          <td><%= veterinarian.business_hours %></td>
+          <td><%= link_to 'Show', veterinarian, class: "btn btn-outline-dark btn-sm" %>
+          <td><%= link_to 'Edit', edit_veterinarian_path(veterinarian), class: "btn btn-outline-dark btn-sm" %>
+          <!--<td><%= link_to 'Destroy', veterinarian, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+        </tr>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
 
-<br>
+  <br>
 
-<%= link_to 'New Veterinarian', new_veterinarian_path, :class => "btn btn-dark"  %>
+  <%= link_to 'New Veterinarian', new_veterinarian_path, :class => "btn btn-dark"  %>
 </div>

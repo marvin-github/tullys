@@ -4,7 +4,7 @@ class SalesPeopleController < ApplicationController
   # GET /sales_people
   # GET /sales_people.json
   def index
-    @sales_people = SalesPerson.all
+    @sales_people = SalesPerson.all.order(last_name: :asc)
   end
 
   # GET /sales_people/1

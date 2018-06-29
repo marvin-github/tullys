@@ -12,30 +12,38 @@
     </div>
   <% end %>
 
-    <div class="container-fluid">
-
-
-        <div class="form-group">
-            <%= form.label :first_name, class: "mr-sm-2" %>
-            <%= form.text_field :first_name, id: :sales_person_first_name, class: "form-control-sm mr-sm-5" %>
-        </div>
-
-        <div class="form-group">
-            <%= form.label :last_name, class: "control-label mr-sm-2"  %>
-            <%= form.text_field :last_name, id: :sales_person_last_name, class: "form-control-sm mr-sm-5" %>
-        </div>
-
-      <div class="form-group">
-        <%= form.label :sales_plan_id, class: "mr-sm-2"  %>
-        <%= form.collection_select(:sales_plan_id, SalesPlan.all, :id, :name, {:include_blank => true}, {:class => 'form-control-sm mr-sm-5'}) %>
+  <div class="container-fluid"><br>
+    <h2 align="center"> Sales People</h2><br>
+    <div class="row" >
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+        <%= form.label :first_name  %>
+        <%= form.text_field :first_name, id: :sales_person_first_name, class: "form-control" %>
       </div>
-
-
-      <div class="form-group">
-        <div class="actions">
-          <%= form.submit :class => "btn btn-success btn-mini" %>
-        </div>
+      <div class="col-sm-3">
+        <%= form.label :last_name %>
+        <%= form.text_field :last_name, id: :sales_person_last_name, class: "form-control" %>
       </div>
-    </div>
+      <div class="col-sm-3"></div>
+    </div><br>
+
+    <div class="row" >
+      <div class="col-sm-3"></div>
+      <div class="col-sm-6">
+        <%= form.label :sales_plan_id  %>
+        <%= form.collection_select(:sales_plan_id, SalesPlan.all, :id, :name, {:include_blank => true}, {:class => 'form-control'}) %>
+      </div>
+      <div class="col-sm-3"></div>
+    </div><br>
+
+
+
+    <div align="center">
+      <div class="actions" >
+        <%= form.submit :class => "btn btn-dark" %>
+      </div>
+    </div><br>
+
 <% end %>
+</div>
 </div>

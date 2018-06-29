@@ -1,29 +1,45 @@
 <div style="background-color:lightgray">
-<%= form_with(model: return_reason, local: true) do |form| %>
-  <% if return_reason.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(return_reason.errors.count, "error") %> prohibited this return_reason from being saved:</h2>
+  <%= form_with(model: return_reason, local: true) do |form| %>
+    <% if return_reason.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(return_reason.errors.count, "error") %> prohibited this return_reason from being saved:</h2>
 
-      <ul>
-      <% return_reason.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+        <ul>
+        <% return_reason.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :return_reason_name %>
+    <div class="container-fluid">
+      <br>
+      <h2 align="center"> Return Reason</h2>
+      <br>
+      <div class="row" >
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+          <%= form.label :name %>
+          <%= form.text_field :name, id: :return_reason_name, class: "form-control"  %>
+        </div>
+        <div class="col-sm-3"></div>
+      </div><br>
+
+      <div class="row" >
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+          <%= form.label :description %>
+           <%= form.text_field :description, id: :return_reason_description, class: "form-control"  %>
+        </div>
+        <div class="col-sm-3"></div>
+      </div><br>
+
+
+      <div align="center">
+        <div class="actions" >
+          <%= form.submit :class => "btn btn-dark" %>
+        </div>
+      </div><br>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description, id: :return_reason_description %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
 </div>

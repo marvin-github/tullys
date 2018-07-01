@@ -17,33 +17,33 @@
     <h2 align="center"> Sire Info</h2>
     <br>
     <div class="row" >
-      <div class="col-sm-3"></div>
-      <div class="col-sm-3">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-4">
         <%= form.label :registration_number %>
         <%= form.text_field :registration_number, id: :sire_registration_number, class: "form-control" %>
       </div>
 
-      <div class="col-sm-3">
+      <div class="col-sm-4">
         <%= form.label :name %>
         <%= form.text_field :name, id: :sire_name, class: "form-control" %>
       </div>
 
 
-      <div class="col-sm-3"></div>
+      <div class="col-sm-2"></div>
     </div><br>
 
     <div class="row" >
-      <div class="col-sm-3"></div>
-      <div class="col-sm-3">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-4">
         <%= form.label :breed_id %>
         <%= form.collection_select(:breed_id, Breed.all, :id, :name,  {:include_blank => true}, {:class => 'form-control'}) %>
       </div>
 
-      <div class="col-sm-3">
+      <div class="col-sm-4">
         <%= form.label :breeder_id %>
         <%= form.collection_select(:breeder_id, Breeder.all, :id, :company_name,  {:include_blank => true}, {:class => 'form-control'}) %>
       </div>
-      <div class="col-sm-3"></div>
+      <div class="col-sm-2"></div>
     </div><br>
 
 

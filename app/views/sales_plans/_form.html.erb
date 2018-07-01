@@ -30,11 +30,11 @@
       <div class="col-sm-3"></div>
       <div class="col-sm-3">
         <%= form.label :start_date %>
-        <%= form.text_field :start_date, id: :sales_plan_start_date,  data: {provide: 'datepicker'}, class: 'form-control' %>
+        <%= form.text_field :start_date, id: :sales_plan_start_date,  data: {provide: 'datepicker'}, class: 'form-control', placeholder: 'yyyy-mm-dd' %>
       </div>
       <div class="col-sm-3">
         <%= form.label :end_date %>
-        <%= form.text_field :end_date, id: :sales_plan_end_date,  data: {provide: 'datepicker'}, class: 'form-control' %>
+        <%= form.text_field :end_date, id: :sales_plan_end_date,  data: {provide: 'datepicker'}, class: 'form-control', placeholder: 'yyyy-mm-dd' %>
       </div>
       <div class="col-sm-3"></div>
     </div><br>
@@ -43,11 +43,11 @@
       <div class="col-sm-3"></div>
       <div class="col-sm-3">
         <%= form.label :variable_percent %>
-        <%= form.text_field :variable_percent, id: :sales_plan_variable_percent, class: 'form-control' %>
+        <%= form.number_field :variable_percent, id: :sales_plan_variable_percent, class: 'form-control', placeholder: '%0.00' %>
       </div>
       <div class="col-sm-3">
         <%= form.label :flat_percent %>
-        <%= form.text_field :flat_percent, id: :sales_plan_flat_percent, class: 'form-control' %>
+        <%= form.number_field :flat_percent, id: :sales_plan_flat_percent, class: 'form-control', placeholder: '%0.00' %>
       </div>
       <div class="col-sm-3"></div>
     </div><br>
@@ -57,11 +57,11 @@
       <div class="col-sm-3"></div>
       <div class="col-sm-3">
         <%= form.label :flat_amount %>
-        <%= form.text_field :flat_amount, id: :sales_plan_flat_amount, class: 'form-control' %>
+        <%= form.number_field :flat_amount, id: :sales_plan_flat_amount, class: 'form-control', placeholder: '$0.00' %>
       </div>
       <div class="col-sm-3">
         <%= form.label :max_amount %>
-        <%= form.text_field :max_amount, id: :sales_plan_max_amount, class: 'form-control' %>
+        <%= form.number_field :max_amount, id: :sales_plan_max_amount, class: 'form-control', placeholder: '$0.00' %>
       </div>
       <div class="col-sm-3"></div>
     </div><br>

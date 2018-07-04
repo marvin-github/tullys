@@ -1,11 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Requirements</h1>
+<h1>Communications</h1>
 
 <table class="table table-striped">
   <thead>
   <tr>
-      <th>Start date</th>
+      <th>Last update</th>
+      <th>Owner</th>
       <th>Name</th>
       <th>Status</th>
     </tr>
@@ -14,11 +15,12 @@
   <tbody>
     <% @requirements.each do |requirement| %>
       <tr>
-        <td><%= requirement.start_date %></td>
+        <td><%= requirement.updated_at.strftime("%Y-%m-%d") %></td>
+        <td><%= requirement.last_update_by %></td>
         <td><%= requirement.name %></td>
         <td><%= requirement.status %></td>
-        <td><%= link_to 'Show', requirement %></td>
-        <td><%= link_to 'Edit', edit_requirement_path(requirement) %></td>
+        <!--<td><%= link_to 'Show', requirement, class: "btn btn-outline-dark btn-sm" %></td>-->
+        <td><%= link_to 'Edit', edit_requirement_path(requirement), class: "btn btn-outline-dark btn-sm" %></td>
 
       </tr>
     <% end %>
@@ -27,4 +29,4 @@
 
 <br>
 
-<%= link_to 'New Requirement', new_requirement_path %>
+<%= link_to 'New Communication', new_requirement_path, :class => "btn btn-dark" %>

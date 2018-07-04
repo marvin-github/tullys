@@ -4,7 +4,7 @@ class RequirementsController < ApplicationController
   # GET /requirements
   # GET /requirements.json
   def index
-    @requirements = Requirement.all.order('start_date  DESC')
+    @requirements = Requirement.all.order('status DESC, updated_at  DESC')
   end
 
   # GET /requirements/1
@@ -69,6 +69,6 @@ class RequirementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def requirement_params
-      params.require(:requirement).permit(:start_date, :name, :description, :detail, :status)
+      params.require(:requirement).permit(:start_date, :name, :description, :detail, :status, :last_update_by)
     end
 end

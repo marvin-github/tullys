@@ -1,3 +1,5 @@
+
+<div style="background-color:lightgray">
 <%= form_with(model: requirement, local: true) do |form| %>
   <% if requirement.errors.any? %>
     <div id="error_explanation">
@@ -10,33 +12,58 @@
       </ul>
     </div>
   <% end %>
+  <div class="container-fluid"><br>
+    <br>
+    <h2 align="center"> Communications</h2>
+    <br>
+    <div class="row" >
+      <div class="col-sm-2"></div>
+      <div class="col-sm-8">
+        <%= form.label :title %>
+        <%= form.text_field :name, id: :requirement_name, class: "form-control"  %>
+      </div>
+      <div class="col-sm-2"></div>
+    </div><br>
 
-  <div class="field">
-    <%= form.label :start_date %>
-    <%= form.date_select :start_date, id: :requirement_start_date %>
-  </div>
+    <div class="row" >
+      <div class="col-sm-2"></div>
+      <div class="col-sm-4">
+        <%= form.label :last_update_by %>
+        <%= form.select(:last_update_by, [['marvin', 'marvin'], ['tom', 'tom']], {:include_blank => true}, {:class => "form-control"})  %>
+      </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :requirement_name %>
-  </div>
+      <div class="col-sm-4">
+        <%= form.label :status %>
+        <%= form.select(:status, [['open', 'open'], ['closed', 'closed']], {}, {:class => "form-control"})  %>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :requirement_description, :cols => "100", :rows => "5" %>
-  </div>
+      </div>
+      <div class="col-sm-2"></div>
+    </div><br>
 
-  <div class="field">
-    <%= form.label :detail %>
-    <%= form.text_area :detail, id: :requirement_detail, :cols => "100", :rows => "5" %>
-  </div>
+    <div class="row" >
+      <div class="col-sm-2"></div>
+      <div class="col-sm-8">
+        <%= form.label :description %>
+        <%= form.text_area :description, id: :requirement_description, class: "form-control", :rows => "10"  %>
+      </div>
+      <div class="col-sm-2"></div>
+    </div><br>
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.select :status, options_for_select([['open', 'open'], ['closed', 'closed']],'open') %>
-  </div>
+    <div class="row" >
+      <div class="col-sm-2"></div>
+      <div class="col-sm-8">
+        <%= form.label :detail %>
+        <%= form.text_area :detail, id: :requirement_detail, class: "form-control", :rows => "10"  %>
+      </div>
+      <div class="col-sm-2"></div>
+    </div><br>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+
+    <div align="center">
+      <div class="actions" >
+        <%= form.submit 'Edit/Update', :class => "btn btn-dark" %>
+      </div>
+    </div><br>
 <% end %>
+</div>
+</div>

@@ -11,6 +11,12 @@
 </p>
 
 <p>
+  <strong>Last update by:</strong>
+  <%= @requirement.last_update_by %>
+</p>
+
+
+<p>
   <strong>Description:</strong>
   <%= @requirement.description %>
 </p>
@@ -25,5 +31,5 @@
   <%= @requirement.status %>
 </p>
 
-<%= link_to 'Edit', edit_requirement_path(@requirement) %> |
-<%= link_to 'Back', requirements_path %>
+<%= link_to 'Edit', edit_requirement_path(@requirement), :class => "btn btn-link" %> |
+<%= link_to 'Back', requirements_path, :class => "btn btn-link" %>

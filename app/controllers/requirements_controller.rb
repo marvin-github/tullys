@@ -4,7 +4,7 @@ class RequirementsController < ApplicationController
   # GET /requirements
   # GET /requirements.json
   def index
-    @requirements = Requirement.all.order('status DESC, updated_at  DESC')
+    @requirements = Requirement.where("status <> 'closed'").order('updated_at  DESC')
   end
 
   # GET /requirements/1

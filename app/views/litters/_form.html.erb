@@ -51,8 +51,8 @@
         </div>
 
         <div class="col-sm-4">
-          <%= form.label :broker_id %>
-          <%= form.collection_select(:broker_id, Broker.all, :id, :company_name, {:include_blank => true}, {:class => 'form-control'}) %>
+          <%= form.label :breeder_id %>
+          <%= form.collection_select(:breeder_id, Breeder.all, :id, :company_name, {:include_blank => true}, {:class => 'form-control'}) %>
         </div>
         <div class="col-sm-2"></div>
       </div><br>

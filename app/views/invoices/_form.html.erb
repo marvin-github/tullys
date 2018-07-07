@@ -29,7 +29,7 @@
       <div class="col-sm-2"></div>
       <div class="col-sm-8">
         <%= form.label :canine_id %>
-        <%= form.select :canine_id, Canine.where("sale_status_id = 1").order(description: :asc).collect {|c| [c.description + ' | Price $' + c.price.to_s + ' | Sale Price $' + c.sale_price.to_s, c.id]}, {:include_blank => true}, {:class => 'form-control'} %>
+        <%= form.select :canine_id, Canine.joins(litter: :dam).where("sale_status_id = 1").order(micro_chip_number: :asc).collect {|c| [c.micro_chip_number.last(5) + ' | ' + c.gender + ' | ' + c.litter.dam.breed.name + ' | ' + c.color, c.id]}, {:include_blank => true}, {:class => 'form-control'} %>
       </div>
       <div class="col-sm-2"></div>
     </div>
@@ -62,7 +62,8 @@
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
           <%= form.label :customer_id %>
-          <%= form.collection_select(:customer_id, Customer.all.order(last_name: :asc), :id, :full_name,  {:include_blank => true}, {:class => 'form-control'}) %>
+          <%= form.select(:customer_id, Customer.all.order(last_name: :asc).collect{|c| [c.full_name + ' | ' + c.mobile_phone, c.id]},  {:include_blank => true}, {:class => 'form-control'}) %>
+
         </div>
         <div class="col-sm-2"></div>
       </div><br>
@@ -88,7 +89,7 @@
       <div class="col-sm-2"></div>
       <div class="col-sm-4">
         <%= form.label :sale_price %>
-        <%= form.number_field :sale_price, id: :invoice_sale_price, class: "form-control", placeholder: "$0.00"  %>
+        <%= form.number_field :sale_price, id: :invoice_sale_price, class: "form-control", placeholder: ""  %>
       </div>
 
       <div class="col-sm-4">

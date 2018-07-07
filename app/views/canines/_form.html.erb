@@ -16,7 +16,7 @@
   <div class="container-fluid"><br>
       <!--*** INFO ***  -->
 
-      <h2 align="center"> Description</h2>
+      <h2 align="center"> Canine Description</h2>
       <br>
 
       <div class="row" >
@@ -167,18 +167,24 @@
     <div class="row">
       <div class="col-sm-2"></div>
       <div class="col-sm-4">
-      <%= ff.label :treatment_id, 'Treatments' %>
-      <%= ff.collection_select(:treatment_type_id,  TreatmentType.all, :id, :name, {:include_blank => true}, class: 'form-control') %>
+        <%= ff.label :treatment_id, 'Treatments' %>
+        <%= ff.collection_select(:treatment_type_id,  TreatmentType.all, :id, :name, {:include_blank => true}, class: 'form-control') %>
       </div>
 
       <div class="col-sm-1" >
         <%= ff.label :Action %>
-        <%= ff.remove_nested_fields_link 'Delete',  :class => "btn btn-outline-dark btn-sm"  %>
+        <%= ff.remove_nested_fields_link 'Delete',  :class => "btn btn-danger"  %>
       </div><br>
   <% end %>
 
+    </div><br><br>
+    <div class="row">
+      <div class="col-sm-6"></div>
+      <div class="col-sm-1">
+        <%= form.add_nested_fields_link :treatments, 'Add',  :class => "btn btn-success"  %>
+      </div>
     </div>
-    <br>
+    <br><br><br>
     <div align="center">
       <div class="actions" >
         <%= form.submit :class => "btn btn-dark" %>

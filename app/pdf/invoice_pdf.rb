@@ -175,8 +175,8 @@ class InvoicePdf < Prawn::Document
     text_box invoice.customer.mobile_phone, :at => [375, y - 40], :size => 8,  :color => '0000ff'
     move_down 15
 
-    formatted_text_box [ {:text => "City:",  :size => 8, :color => '000000'}], :at => [0, y - 40]
-    text_box invoice.customer.city, :at => [100, y - 40], :size => 8,  :color => '0000ff'
+    formatted_text_box [ {:text => "City/St/Zip:",  :size => 8, :color => '000000'}], :at => [0, y - 40]
+    text_box invoice.customer.city + ", " +invoice.customer.state + " " + invoice.customer.zip, :at => [100, y - 40], :size => 8,  :color => '0000ff'
     move_down 30
 
 
@@ -206,6 +206,12 @@ class InvoicePdf < Prawn::Document
     text_box invoice.canine.litter.birth_date.strftime("%m/%d/%Y"),:at => [100, y - 40], :size => 8,  :color => '0000ff'
     formatted_text_box [ {:text => "Arrived:",  :size => 8, :color => '000000'}], :at => [275, y - 40]
     text_box invoice.canine.litter.arrival_date.strftime("%m/%d/%Y"), :at => [375, y - 40], :size => 8,  :color => '0000ff'
+    move_down 15
+
+    formatted_text_box [ {:text => "Dam:",  :size => 8, :color => '000000'}], :at => [0, y - 40]
+    text_box invoice.canine.litter.dam.name,:at => [100, y - 40], :size => 8,  :color => '0000ff'
+    formatted_text_box [ {:text => "Sire:",  :size => 8, :color => '000000'}], :at => [275, y - 40]
+    text_box invoice.canine.litter.sire.name, :at => [375, y - 40], :size => 8,  :color => '0000ff'
     move_down 15
 
     formatted_text_box [ {:text => "Mail/Pickup:",  :size => 8, :color => '000000'}], :at => [0, y - 40]

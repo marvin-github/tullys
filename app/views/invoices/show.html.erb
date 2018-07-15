@@ -46,8 +46,13 @@
 </p>
 
 <p>
-  <strong>Credit card last 4:</strong>
+  <strong>Credit card [1] last 4:</strong>
   <%= @invoice.credit_card_last_4 %>
+</p>
+
+<p>
+  <strong>Credit card [2] last 4:</strong>
+  <%= @invoice.credit_card2_last_4 %>
 </p>
 
 <p>
@@ -108,12 +113,6 @@
   <strong>Refund method:</strong>
   <%= @invoice.refund_method %>
 </p>
-
-<p>
-  <strong>Sale completed:</strong>
-  <%= @invoice.sale_completed %>
-</p>
-
 
 
 <%= link_to 'Edit', edit_invoice_path(@invoice), :class => "btn btn-link" %> |

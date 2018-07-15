@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       get 'display_pdf'
     end
   end
+  get 'invoices/get_price/:id', to: 'invoices#get_price'
   resources :payment_methods
   resources :sales_people
   resources :sales_plans

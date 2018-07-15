@@ -79,6 +79,19 @@ class InvoicesController < ApplicationController
     end
   end
 
+  def get_price
+    #puts'*************'
+    puts params[:id]
+    @canine = Canine.find(params[:id])
+    @msg = { "success" => "true", "price" => @canine.price.to_s, :sale_discount => @canine.sale_price}
+    puts @canine.price
+    respond_to do |format|
+      format.html
+      format.json { render json: @msg }
+    end
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_invoice
@@ -93,6 +106,6 @@ class InvoicesController < ApplicationController
                                       :payment_amount_2, :payment_date, :veterinarian_id,
                                       :sales_person_1, :sales_person_2, :commission_percent,
                                       :return_date, :refund_amount, :refund_method,
-                                      :sale_completed, :invoice_status_id, :credit_card2_last_4)
+                                      :invoice_status_id, :credit_card2_last_4)
     end
 end

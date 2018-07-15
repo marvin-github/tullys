@@ -16,7 +16,7 @@
   <div class="container-fluid"><br>
       <!--*** INFO ***  -->
 
-      <h2 align="center"> Canine Description</h2>
+      <h2 align="center"> Canine </h2>
       <br>
 
       <div class="row" >
@@ -72,17 +72,17 @@
         <div class="col-sm-2"></div>
           <div class="col-sm-3">
             <%= form.label :price %>
-            <%= form.number_field :price, id: :canine_price, class: "form-control", placeholder: '0.00' %>
+            <%= form.number_field :price, id: :canine_price, class: "form-control", step: :any %>
           </div>
 
           <div class="col-sm-3">
             <%= form.label :sale_price %>
-            <%= form.number_field :sale_price, id: :canine_sale_price, class: "form-control", placeholder: '0.00' %>
+            <%= form.number_field :sale_price, id: :canine_sale_price, class: "form-control", step: :any %>
           </div>
 
           <div class="col-sm-2">
             <%= form.label :fault_discount, 'Discount' %>
-            <%= form.number_field :fault_discount, id: :canine_fault_discount, class: "form-control", placeholder: '0' %>
+            <%= form.number_field :fault_discount, id: :canine_fault_discount, class: "form-control", step: :any %>
           </div>
         <div class="col-sm-2"></div>
       </div>

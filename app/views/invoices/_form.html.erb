@@ -1,4 +1,22 @@
+<script>
+  $(document).ready(function() {
+      jQuery(function($) {
+          $("#dog_id").change(function() {
+              var state = $('select#dog_id :selected').val();
+              if(state == "") state="0";
+                jQuery.getJSON('/invoices/get_price/' + state, function(data){
+                  $("#invoice_sale_price").val(data.price);
+                  $("#invoice_sale_discount").val(data.sale_discount);
+              });
+              return false;
+          });
+      });
+  });
+</script>
+
 <div style="background-color:lightgray">
+
+
 <%= form_with(model: invoice, local: true) do |form| %>
   <% if invoice.errors.any? %>
     <div id="error_explanation">
@@ -22,14 +40,14 @@
 
     <!--*** PET INFO ***    -->
 
-    <h2 align="center"> Pet Info</h2>
+    <h2 align="center"> Invoice </h2>
     <br>
 
     <div class="row" >
       <div class="col-sm-2"></div>
       <div class="col-sm-8">
         <%= form.label :canine_id %>
-        <%= form.select :canine_id, Canine.joins(litter: :dam).where("sale_status_id = 1").order(micro_chip_number: :asc).collect {|c| [c.micro_chip_number.last(5) + ' | ' + c.gender + ' | ' + c.litter.dam.breed.name + ' | ' + c.color, c.id]}, {:include_blank => true}, {:class => 'form-control'} %>
+        <%= form.select :canine_id, Canine.joins(litter: :dam).where("sale_status_id = 1").order(micro_chip_number: :asc).collect {|c| [c.micro_chip_number.last(5) + ' | ' + c.gender + ' | ' + c.litter.breed.name + ' | ' + c.color, c.id]}, {:include_blank => true}, {:class => 'form-control', :id => 'dog_id'} %>
       </div>
       <div class="col-sm-2"></div>
     </div>
@@ -68,6 +86,20 @@
         <div class="col-sm-2"></div>
       </div><br>
 
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-4">
+        <%= form.label :sale_price %>
+        <%= form.number_field :sale_price, id: :invoice_sale_price, class: "form-control", step: :any  %>
+      </div>
+
+      <div class="col-sm-4">
+        <%= form.label :sale_discount %>
+        <%= form.number_field :sale_discount, id: :invoice_sale_discount, class: "form-control", step: :any %>
+      </div>
+
+      <div class="col-sm-2"></div>
+    </div><br>
 
     <div class="row">
       <div class="col-sm-2"></div>
@@ -85,21 +117,7 @@
 
     <br>
 
-    <div class="row">
-      <div class="col-sm-2"></div>
-      <div class="col-sm-4">
-        <%= form.label :sale_price %>
-        <%= form.number_field :sale_price, id: :invoice_sale_price, class: "form-control", placeholder: ""  %>
-      </div>
 
-      <div class="col-sm-4">
-        <%= form.label :sale_discount %>
-        <%= form.number_field :sale_discount, id: :invoice_sale_discount, class: "form-control" %>
-      </div>
-
-      <div class="col-sm-2"></div>
-    </div>
-    <br>
     <div class="row">
       <div class="col-sm-2"></div>
       <div class="col-sm-8">
@@ -111,11 +129,7 @@
     <br>
     <div class="row">
       <div class="col-sm-2"></div>
-      <div class="col-sm-4">
-        <%= form.label :sale_completed %>
-        <%= form.text_field :sale_completed, id: :invoice_sale_completed, class: "form-control" %>
-      </div>
-      <div class="col-sm-4">
+      <div class="col-sm-8">
         <%= form.label :purchase_date %>
         <%= form.text_field :purchase_date, id: :invoice_purchase_date, data:{ provide:'datepicker' }, class: "form-control", placeholder: "yyyy-mm-dd" %>
       </div>
@@ -139,7 +153,7 @@
 
     <div class="col-sm-3">
       <%= form.label :amount %>
-      <%= form.number_field :payment_amount_1, id: :invoice_payment_amount_1, class: "form-control", placeholder: "$0.0" %>
+      <%= form.number_field :payment_amount_1, id: :invoice_payment_amount_1, class: "form-control", step: :any %>
     </div>
 
     <div class="col-sm-2">
@@ -157,7 +171,7 @@
 
     <div class="col-sm-3">
       <%= form.label :amount %>
-      <%= form.number_field :payment_amount_2, id: :invoice_payment_amount_2, class: "form-control", placeholder: "$0.0" %>
+      <%= form.number_field :payment_amount_2, id: :invoice_payment_amount_2, class: "form-control", step: :any %>
     </div>
 
     <div class="col-sm-2">
@@ -193,7 +207,7 @@
     <div class="col-sm-2"></div>
       <div class="col-sm-4">
       <%= form.label :return_date %>
-      <%= form.text_field :return_date, id: :invoice_return_date, data:{ provide:'datepicker'}, class: "form-control" %>
+      <%= form.text_field :return_date, id: :invoice_return_date, data:{ provide:'datepicker'}, class: "form-control", placeholder: "yyyy-mm-dd" %>
     </div>
 
     <div class="col-sm-4">
@@ -209,7 +223,7 @@
 
     <div class="col-sm-8">
       <%= form.label :refund_amount %>
-      <%= form.number_field :refund_amount, id: :invoice_refund_amount, class: "form-control", placeholder: "$0.00" %>
+      <%= form.number_field :refund_amount, id: :invoice_refund_amount, class: "form-control", step: :any %>
     </div>
     <div class="col-sm-2"></div>
   </div>

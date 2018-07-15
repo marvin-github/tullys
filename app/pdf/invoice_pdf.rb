@@ -4,6 +4,8 @@ class InvoicePdf < Prawn::Document
   @@purchase_date = ''
   @@sale_discount = ''
   @@sale_price = ''
+  @@total_price = ''
+  @@sale_discount_reason = ''
   @@payment_method_1 = ''
   @@payment_method_2 = ''
   @@payment_amount_1 = ''
@@ -16,8 +18,21 @@ class InvoicePdf < Prawn::Document
   @@return_date = ''
   @@refund_amount = ''
   @@invoice_status_id = ''
+  @@payment_amount_1 = ''
+  @@payment_method_1 = ''
+  @@payment_amount_2 = ''
+  @@payment_method_2 = ''
+  @@card_1 = ''
+  @@card_2 = ''
+
 
   def init_invoice(i)
+    payment_methods_h = {}
+    payment_methods = PaymentMethod.all
+    payment_methods.each do |p|
+      payment_methods_h[p.id] = p.name
+    end
+
     puts i.pretty_print_inspect
     unless i.purchase_date.blank?
       @@purchase_date = i.purchase_date.strftime("%m/%d/%Y")
@@ -36,10 +51,36 @@ class InvoicePdf < Prawn::Document
 
     unless i.sale_price.blank?
       @@sale_price = "$"+ sprintf('%.2f',i.sale_price.to_s)
+      @@total_price = "$"+ sprintf('%.2f',i.sale_price.to_s)
     end
 
     unless i.sale_discount.blank?
       @@sale_discount = "$"+ sprintf('%.2f',i.sale_discount.to_s)
+      total_price = i.sale_price - i.sale_discount
+      @@total_price = "$"+ sprintf('%.2f',total_price.to_s)
+    end
+
+    if !i.sale_discount_reason.blank?
+      @@sale_discount_reason = i.sale_discount_reason
+    end
+
+    if !i.payment_method_1.blank?
+      @@payment_method_1 = payment_methods_h[i.payment_method_1]
+    end
+    if !i.payment_amount_1.blank?
+      @@payment_amount_1 = "$"+ sprintf('%.2f',i.payment_amount_1.to_s)
+    end
+    if !i.credit_card_last_4.blank?
+      @@card_1 = "[" + i.credit_card_last_4.to_s + "]"
+    end
+    if !i.payment_method_2.blank?
+      @@payment_method_2 = payment_methods_h[i.payment_method_2]
+    end
+    if !i.payment_amount_2.blank?
+      @@payment_amount_2 = "$"+ sprintf('%.2f',i.payment_amount_2.to_s)
+    end
+    if !i.credit_card2_last_4.blank?
+      @@card_2 = "[" + i.credit_card2_last_4.to_s + "]"
     end
   end
 
@@ -66,27 +107,45 @@ class InvoicePdf < Prawn::Document
     formatted_text_box [{:text => "Invoice Id:",  :size => 8,  :color => '000000'}], :at => [0, y - 40]
     text_box  invoice.id.to_s, :at => [100, y - 40], :size => 8,  :color => '0000ff'
 
+    formatted_text_box [{:text => "Purchased Date:",  :size => 8, :color => '000000'}], :at => [275, y - 40]
+    text_box  @@purchase_date, :at => [375, y - 40], :size => 8,  :color => '0000ff'
     move_down 15
-    formatted_text_box [{:text => "Purchased Date:",  :size => 8, :color => '000000'}], :at => [0, y - 40]
-    text_box  @@purchase_date, :at => [100, y - 40], :size => 8,  :color => '0000ff'
 
-
+    #------------price
+    formatted_text_box [{:text => "Price:",  :size => 8, :color => '000000'}], :at => [0, y - 40]
+    text_box  @@sale_price, :at => [100, y - 40], :size => 8,  :color => '0000ff'
 
     formatted_text_box [{:text => "Sales People:",  :size => 8, :color => '000000'}], :at => [275, y - 40]
     text_box @@sales_person_1,:at => [375, y - 40], :size => 8,  :color => '0000ff'
     move_down 15
 
-    formatted_text_box [{:text => "Price:",  :size => 8, :color => '000000'}], :at => [0, y - 40]
-    text_box  @@sale_price, :at => [100, y - 40], :size => 8,  :color => '0000ff'
+
+    #-----------discount
+    formatted_text_box [{:text => "Discount:",  :size => 8, :color => '000000'}], :at => [0, y - 40]
+    text_box  @@sale_discount, :at => [100, y - 40], :size => 8,  :color => '0000ff'
 
     text_box @@sales_person_2,:at => [375, y - 40], :size => 8,  :color => '0000ff'
     move_down 15
 
-    formatted_text_box [{:text => "Discount:",  :size => 8, :color => '000000'}], :at => [0, y - 40]
-    text_box  @@sale_discount, :at => [100, y - 40], :size => 8,  :color => '0000ff'
+    #___________total price
+    formatted_text_box [{:text => "Total Price:",  :size => 8, :color => '000000'}], :at => [0, y - 40]
+    text_box  @@total_price, :at => [100, y - 40], :size => 8,  :color => '0000ff'
 
     formatted_text_box [{:text => "Payment Date:",  :size => 8, :color => '000000'}], :at => [275, y - 40]
     text_box  @@payment_date, :at => [375, y - 40], :size => 8,  :color => '0000ff'
+    move_down 15
+
+    #___________card data
+    formatted_text_box [{:text => "Payment 1:",  :size => 8, :color => '000000'}], :at => [0, y - 40]
+    text_box  @@payment_amount_1 + "  " + @@payment_method_1 + "  " + @@card_1, :at => [100, y - 40], :size => 8,  :color => '0000ff'
+
+    formatted_text_box [{:text => "Payment 2:",  :size => 8, :color => '000000'}], :at => [275, y - 40]
+    text_box  @@payment_amount_2 + "  " + @@payment_method_2 + "  " + @@card_2, :at => [375, y - 40], :size => 8,  :color => '0000ff'
+    move_down 15
+
+    #___________discount reason
+    formatted_text_box [{:text => "Discount Reason:",  :size => 8, :color => '000000'}], :at => [0, y - 40]
+    text_box  @@sale_discount_reason, :at => [100, y - 40], :size => 8,  :color => '0000ff'
     move_down 30
 
 

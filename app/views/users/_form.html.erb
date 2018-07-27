@@ -1,0 +1,83 @@
+<div style="background-color:lightgray">
+<%= form_with(model: user, local: true) do |form| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="container-fluid">
+    <br>
+    <h2 align="center"> User Info</h2>
+    <br>
+    <div class="row" >
+      <div class="col-sm-2"></div>
+      <div class="col-sm-8">
+        <%= form.label :name %>
+        <%= form.text_field :name, id: :user_name, class: "form-control" %>
+      </div>
+      <div class="col-sm-2"></div>
+    </div><br>
+
+    <div class="row" >
+      <div class="col-sm-2"></div>
+      <div class="col-sm-8">
+        <%= form.label :email, 'User Name:' %>
+        <%= form.text_field :email, id: :user_email, class: "form-control" %>
+      </div>
+      <div class="col-sm-2"></div>
+    </div><br>
+
+    <div class="row" >
+      <div class="col-sm-2"></div>
+      <div class="col-sm-8">
+        <%= form.label :password %>
+        <%= form.text_field :password, id: :user_password, class: "form-control" %>
+      </div>
+      <div class="col-sm-2"></div>
+    </div><br>
+
+    <div class="row" >
+      <div class="col-sm-2"></div>
+      <div class="col-sm-8">
+        <%= form.label :password_confirmation %>
+        <%= form.text_field :password_confirmation, id: :user_password_confirmation, class: "form-control" %>
+      </div>
+      <div class="col-sm-2"></div>
+    </div><br>
+
+    <div class="row" >
+      <div class="col-sm-2"></div>
+      <div class="col-sm-2">
+        <%= form.radio_button(:access, "admin") %>
+        <%= form.label(:access_admin, "Admin") %>
+      </div>
+      <div class="col-sm-2">
+        <%= form.radio_button(:access, "manager") %>
+        <%= form.label(:access_manager, "Manager") %>
+      </div>
+      <div class="col-sm-2">
+        <%= form.radio_button(:access, "staff") %>
+        <%= form.label(:access_staff, "Staff") %>
+      </div>
+      <div class="col-sm-2">
+        <%= form.radio_button(:access, "inactive") %>
+        <%= form.label(:access_inactive, "Inactive") %>
+      </div>
+      <div class="col-sm-2"></div>
+    </div><br><br>
+
+    <div align="center">
+      <div class="actions" >
+        <%= form.submit :class => "btn btn-dark" %>
+      </div>
+    </div><br>
+
+<% end %>
+</div>
+</div>

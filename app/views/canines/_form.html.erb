@@ -147,12 +147,12 @@
     <div class="col-sm-2"></div>
     <div class="col-sm-4">
       <%= form.label :available_date %>
-      <%= form.text_field :available_date, id: :canine_available_date, data:{ provide:'datepicker' }, class: "form-control", placeholder: 'yyyy-mm-dd' %>
+      <%= form.text_field :available_date, id: :canine_available_date, data:{ provide:'datepicker', 'date-format' => 'yyyy-mm-dd' }, class: "form-control", placeholder: 'yyyy-mm-dd' %>
     </div>
 
     <div class="col-sm-4">
       <%= form.label :last_sold_date %>
-      <%= form.text_field :last_sold_date, id: :canine_last_sold_date, data:{ provide:'datepicker' }, class: "form-control", placeholder: 'yyyy-mm-dd' %>
+      <%= form.text_field :last_sold_date, id: :canine_last_sold_date, data:{ provide:'datepicker', 'date-format' => 'yyyy-mm-dd' }, class: "form-control", placeholder: 'yyyy-mm-dd' %>
     </div>
     <div class="col-sm-2"></div>
   </div>

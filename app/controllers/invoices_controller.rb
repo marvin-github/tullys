@@ -1,6 +1,8 @@
 class InvoicesController < ApplicationController
-  before_action :set_invoice, only: [:show, :edit, :update, :destroy]
+  before_action  :authorize
+  before_action  :set_invoice,  only: [:show, :edit, :update, :destroy]
 
+  #:set_invoice,
   # GET /invoices
   # GET /invoices.json
   def index
@@ -39,6 +41,8 @@ class InvoicesController < ApplicationController
         format.json { render json: @invoice.errors, status: :unprocessable_entity }
       end
     end
+
+
   end
 
   # PATCH/PUT /invoices/1

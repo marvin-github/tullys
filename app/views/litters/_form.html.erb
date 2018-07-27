@@ -29,12 +29,12 @@
         <div class="col-sm-2"></div>
         <div class="col-sm-4">
           <%= form.label :arrival_date %>
-          <%= form.text_field :arrival_date, id: :litter_arrival_date,  data: {provide: 'datepicker'}, class: 'form-control', placeholder: 'yyyy-mm-dd' %>
+          <%= form.text_field :arrival_date, id: :litter_arrival_date,  data: {provide: 'datepicker', 'date-format' => 'yyyy-mm-dd'}, class: 'form-control', placeholder: 'yyyy-mm-dd' %>
         </div>
 
         <div class="col-sm-4">
           <%= form.label :available_date %>
-          <%= form.text_field :available_date, id: :litter_available_date, data:{ provide:'datepicker' }, placeholder: 'yyyy-mm-dd', class: "form-control"  %>
+          <%= form.text_field :available_date, id: :litter_available_date, data:{ provide:'datepicker', 'date-format' => 'yyyy-mm-dd' }, placeholder: 'yyyy-mm-dd', class: "form-control"  %>
         </div>
 
 
@@ -47,7 +47,7 @@
         <div class="col-sm-2"></div>
         <div class="col-sm-4">
           <%= form.label :birth_date %>
-          <%= form.text_field :birth_date, id: :litter_birth_date, data:{ provide:'datepicker' }, class: "form-control", placeholder: 'yyyy-mm-dd' %>
+          <%= form.text_field :birth_date, id: :litter_birth_date, data:{ provide:'datepicker', 'date-format' => 'yyyy-mm-dd' }, class: "form-control", placeholder: 'yyyy-mm-dd' %>
         </div>
 
         <div class="col-sm-4">

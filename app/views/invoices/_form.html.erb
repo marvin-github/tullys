@@ -131,7 +131,7 @@
       <div class="col-sm-2"></div>
       <div class="col-sm-8">
         <%= form.label :purchase_date %>
-        <%= form.text_field :purchase_date, id: :invoice_purchase_date, data:{ provide:'datepicker' }, class: "form-control", placeholder: "yyyy-mm-dd" %>
+        <%= form.text_field :purchase_date, id: :invoice_purchase_date, data:{ provide:'datepicker', 'date-format' => 'yyyy-mm-dd' }, class: "form-control", placeholder: "yyyy-mm-dd" %>
       </div>
       <div class="col-sm-2"></div>
     </div>
@@ -188,7 +188,7 @@
     <div class="col-sm-2"></div>
     <div class="col-sm-4">
       <%= form.label :payment_date %>
-      <%= form.text_field :payment_date, id: :invoice_payment_date, data:{ provide:'datepicker' }, class: "form-control", placeholder: "yyyy-mm-dd" %>
+      <%= form.text_field :payment_date, id: :invoice_payment_date, data:{ provide:'datepicker', 'date-format' => 'yyyy-mm-dd' }, class: "form-control", placeholder: "yyyy-mm-dd" %>
     </div>
 
     <div class="col-sm-4">
@@ -207,7 +207,7 @@
     <div class="col-sm-2"></div>
       <div class="col-sm-4">
       <%= form.label :return_date %>
-      <%= form.text_field :return_date, id: :invoice_return_date, data:{ provide:'datepicker'}, class: "form-control", placeholder: "yyyy-mm-dd" %>
+      <%= form.text_field :return_date, id: :invoice_return_date, data:{ provide:'datepicker', 'date-format' => 'yyyy-mm-dd'}, class: "form-control", placeholder: "yyyy-mm-dd" %>
     </div>
 
     <div class="col-sm-4">

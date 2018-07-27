@@ -1,0 +1,31 @@
+
+
+<p id="notice"><%= notice %></p>
+
+<h1>Invoice History</h1>
+<div class="container-fluid">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Invoice Id</th>
+      <th>Date created</th>
+      <th>Total Price</th>
+      <th>Staus</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @invoice_histories.each do |invoice| %>
+        <tr>
+          <td><%= invoice.invoice_id %></td>
+          <td><%= invoice.created_at.strftime("%m/%d/%Y") %></td>
+          <td><%= invoice.total_price %></td>
+          <td><%= invoice.invoice_status %></td>
+          <td><%= link_to 'Show', invoice, class: "btn btn-outline-dark btn-sm" %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table><br>
+
+
+</div>

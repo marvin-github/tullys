@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+=begin
+  get 'invoice_histories/index'
+  get 'invoice_histories/create'
+  get 'invoice_histories/new'
+  get 'invoice_histories/destroy'
+=end
+
+
+  resources :invoice_histories do
+    collection do
+      get 'export'
+    end
+  end
+
   resources :requirements
   resources :invoice_statuses
   resources :invoices do
@@ -29,6 +43,16 @@ Rails.application.routes.draw do
   resources :brokers
   resources :veterinarians
   resources :peds
+
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+
+  resources :users
+
+  #get '/signup' => 'users#new'
+  #post '/users' => 'users#create'
+  #root to: 'sessions#new'
   root to: 'menu#index'
 
   get 'menu/index'

@@ -48,8 +48,13 @@ class InvoicesController < ApplicationController
   # PATCH/PUT /invoices/1
   # PATCH/PUT /invoices/1.json
   def update
+
+
+
     respond_to do |format|
-      if @invoice.update(invoice_params)
+      if @invoice.user_access(session[:user_id])
+        format.html { render :edit }
+      elsif @invoice.update(invoice_params)
         format.html { redirect_to @invoice, notice: 'Invoice was successfully updated.' }
         format.json { render :show, status: :ok, location: @invoice }
       else
@@ -109,7 +114,8 @@ class InvoicesController < ApplicationController
                                       :payment_method_1, :payment_method_2, :payment_amount_1,
                                       :payment_amount_2, :payment_date, :veterinarian_id,
                                       :sales_person_1, :sales_person_2, :commission_percent,
-                                      :return_date, :refund_amount, :refund_method,
+                                      :return_date, :refund_amount, :refund_method, :return_reason,
                                       :invoice_status_id, :credit_card2_last_4)
     end
+
 end

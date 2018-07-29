@@ -114,6 +114,11 @@
   <%= @invoice.refund_method %>
 </p>
 
+<p>
+  <strong>Refund method:</strong>
+  <%= @invoice.return_reason %>
+</p>
+
 
 <%= link_to 'Edit', edit_invoice_path(@invoice), :class => "btn btn-link" %> |
 <%= link_to 'Back', invoices_path, :class => "btn btn-link" %> |

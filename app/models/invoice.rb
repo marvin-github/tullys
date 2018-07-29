@@ -6,8 +6,16 @@ class Invoice < ApplicationRecord
 
   validates :refund_amount, :numericality => {:less_than => 0}, :allow_blank => true, presence: {message: "must be negative"}
   after_validation :amounts
-
   after_save :create_invoice_history
+
+  def user_access(user)
+    if self.invoice_status.name == 'Finalize'
+      user = User.find(user)
+      if user.access != 'admin'
+        errors.add(:user, "must have admin access to edit invoice that has been finalized")
+      end
+    end
+  end
 
   def create_invoice_history
     total_price = 0.0

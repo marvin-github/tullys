@@ -47,7 +47,7 @@
       <div class="col-sm-2"></div>
       <div class="col-sm-8">
         <%= form.label :canine_id %>
-        <%= form.select :canine_id, Canine.joins(litter: :dam).where("sale_status_id = 1").order(micro_chip_number: :asc).collect {|c| [c.micro_chip_number.last(5) + ' | ' + c.gender + ' | ' + c.litter.breed.name + ' | ' + c.color, c.id]}, {:include_blank => true}, {:class => 'form-control', :id => 'dog_id'} %>
+        <%= form.select :canine_id, Canine.joins(litter: :dam).order(sale_status_id: :asc, micro_chip_number: :asc).collect {|c| [c.sale_status.name + ' | ' + c.micro_chip_number.last(5) + ' | ' + c.gender.code + ' | ' + c.litter.breed.name + ' | ' + c.color, c.id]}, {:include_blank => true}, {:class => 'form-control', :id => 'dog_id'} %>
       </div>
       <div class="col-sm-2"></div>
     </div>

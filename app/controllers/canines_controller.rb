@@ -71,7 +71,7 @@ class CaninesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def canine_params
-      params.require(:canine).permit(:litter_id, :micro_chip_number, :gender, :color,
+      params.require(:canine).permit(:litter_id, :micro_chip_number, :gender_id, :color,
                                      :arrival_weight, :weight_category_id, :sale_weight,
                                      :price, :sale_price, :fault_description,
                                      :fault_discount, :fault_discount, :registration_company_id,

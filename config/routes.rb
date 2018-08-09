@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+
 =begin
   get 'invoice_histories/index'
   get 'invoice_histories/create'
@@ -29,6 +31,7 @@ Rails.application.routes.draw do
   resources :registration_companies
   resources :return_reasons
   resources :weight_categories
+  resources :genders
   resources :litters
   resources :sires
   resources :dams

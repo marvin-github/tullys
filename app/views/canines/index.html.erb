@@ -17,7 +17,7 @@
       <tr>
         <td><%= canine.micro_chip_number.last(5) %></td>
         <td><%= canine.description %></td>
-        <td><%= canine.gender %></td>
+        <td><%= canine.gender.name %></td>
         <td><%= canine.sale_status.name %></td>
         <td><%= link_to 'Show', canine, class: "btn btn-outline-dark btn-sm" %></td>
         <td><%= link_to 'Edit ', edit_canine_path(canine), class: "btn btn-outline-dark btn-sm" %></td>

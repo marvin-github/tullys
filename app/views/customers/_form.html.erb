@@ -1,3 +1,4 @@
+<div class="container-fluid">
 <div style="background-color:lightgray">
 <%= form_with(model: customer, local: true) do |form| %>
   <% if customer.errors.any? %>
@@ -11,7 +12,7 @@
       </ul>
     </div>
   <% end %>
-  <div class="container-fluid">
+
 
   <br>
   <!--*** INFO ***     -->
@@ -91,13 +92,15 @@
     <div class="col-sm-2"></div>
   </div><br>
 
-    <div align="center">
-      <div class="actions" >
-        <%= form.submit :class => "btn btn-dark" %>
-      </div>
-    </div><br>
+  <div align="center">
+    <div class="actions" >
+      <%= form.submit :class => "btn btn-dark" %>
+    </div>
+  </div><br>
+  </div>
+  <br><br>
 
 
 <% end %>
-</div>
+
 </div>

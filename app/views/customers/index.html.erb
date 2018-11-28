@@ -20,9 +20,12 @@
         <td><%= customer.first_name %></td>
         <td><%= customer.home_phone %></td>
         <td><%= customer.mobile_phone %></td>
-        <td><%= link_to 'Show', customer, class: "btn btn-outline-dark btn-sm" %></td>
-        <td><%= link_to 'Edit', edit_customer_path(customer), class: "btn btn-outline-dark btn-sm" %></td>
-        <!--<td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+        <div class="btn-group">
+          <td><%= link_to 'Show', customer, class: "btn btn-outline-dark btn-sm" %></td>
+          <!--<td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+          <td><%= link_to 'Edit', edit_customer_path(customer), class: "btn btn-outline-dark btn-sm" %></td>
+
+        </div>
       </tr>
   <% end %>
   </tbody>
@@ -30,5 +33,10 @@
 
 <br>
 
-<%= link_to 'New Customer', new_customer_path, :class => "btn btn-dark" %>
+
+  <div align="center">
+    <%= link_to 'New Customer', new_customer_path, :class => "btn btn-dark" %>
+  </div>
+
+
 </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180512133027) do
+ActiveRecord::Schema.define(version: 20181117220805) do
 
   create_table "breeders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "first_name"
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20180512133027) do
   create_table "canines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint "litter_id"
     t.string "micro_chip_number"
-    t.string "gender"
+    t.integer "gender_id"
     t.string "color"
     t.string "arrival_weight"
     t.bigint "weight_category_id"
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 20180512133027) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "description", limit: 100
+    t.string "registration_number", limit: 45
     t.index ["litter_id"], name: "index_canines_on_litter_id"
     t.index ["registration_company_id"], name: "index_canines_on_registration_company_id"
     t.index ["sale_status_id"], name: "index_canines_on_sale_status_id"
@@ -127,6 +128,25 @@ ActiveRecord::Schema.define(version: 20180512133027) do
     t.index ["picture_id"], name: "index_dams_on_picture_id"
   end
 
+  create_table "genders", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "code", limit: 45
+    t.string "name", limit: 45
+  end
+
+  create_table "invoice_histories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.bigint "invoice_id"
+    t.date "purchase_date"
+    t.decimal "sale_discount", precision: 10, scale: 2
+    t.decimal "sale_price", precision: 10, scale: 2
+    t.decimal "total_price", precision: 10, scale: 2
+    t.date "return_date"
+    t.decimal "refund_amount", precision: 10, scale: 2
+    t.string "invoice_status", limit: 55
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["invoice_id"], name: "index_invoice_histories_on_invoice_id"
+  end
+
   create_table "invoice_statuses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "code", limit: 45
     t.string "name"
@@ -141,6 +161,7 @@ ActiveRecord::Schema.define(version: 20180512133027) do
     t.string "sale_discount_reason"
     t.string "paper_deliver_method"
     t.string "credit_card_last_4"
+    t.string "credit_card2_last_4", limit: 45
     t.integer "payment_method_1"
     t.integer "payment_method_2"
     t.decimal "payment_amount_1", precision: 10, scale: 2
@@ -153,6 +174,7 @@ ActiveRecord::Schema.define(version: 20180512133027) do
     t.date "return_date"
     t.decimal "refund_amount", precision: 10, scale: 2
     t.string "refund_method"
+    t.string "return_reason"
     t.string "sale_completed"
     t.integer "invoice_status_id"
     t.datetime "created_at", null: false
@@ -162,12 +184,32 @@ ActiveRecord::Schema.define(version: 20180512133027) do
     t.index ["veterinarian_id"], name: "index_invoices_on_veterinarian_id"
   end
 
+  create_table "litter_treatment_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.bigint "litter_id"
+    t.bigint "treatment_type_id"
+    t.date "treatment_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["litter_id"], name: "index_litter_treatment_types_on_litter_id"
+    t.index ["treatment_type_id"], name: "index_litter_treatment_types_on_treatment_type_id"
+  end
+
+  create_table "litter_treatments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.bigint "litter_id"
+    t.bigint "treatment_type_id"
+    t.date "treatment_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["litter_id"], name: "index_litter_treatments_on_litter_id"
+    t.index ["treatment_type_id"], name: "index_litter_treatments_on_treatment_type_id"
+  end
+
   create_table "litters", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.date "arrival_date"
     t.date "available_date"
     t.date "birth_date"
     t.bigint "breed_id"
-    t.bigint "broker_id"
+    t.bigint "breeder_id"
     t.bigint "dam_id"
     t.bigint "sire_id"
     t.integer "male_count"
@@ -176,7 +218,6 @@ ActiveRecord::Schema.define(version: 20180512133027) do
     t.datetime "updated_at", null: false
     t.string "name", limit: 100
     t.index ["breed_id"], name: "index_litters_on_breed_id"
-    t.index ["broker_id"], name: "index_litters_on_broker_id"
     t.index ["dam_id"], name: "index_litters_on_dam_id"
     t.index ["sire_id"], name: "index_litters_on_sire_id"
   end
@@ -216,6 +257,7 @@ ActiveRecord::Schema.define(version: 20180512133027) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "last_update_by", limit: 45
   end
 
   create_table "return_reasons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -304,6 +346,16 @@ ActiveRecord::Schema.define(version: 20180512133027) do
     t.index ["treatment_type_id"], name: "index_treatments_on_treatment_type_id"
   end
 
+  create_table "users", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "name", limit: 100
+    t.string "email", limit: 100
+    t.string "password_digest", limit: 100
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string "access", limit: 45
+    t.string "admin", limit: 45
+  end
+
   create_table "veterinarians", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "first_name"
     t.string "last_name"
@@ -341,8 +393,11 @@ ActiveRecord::Schema.define(version: 20180512133027) do
   add_foreign_key "invoices", "canines"
   add_foreign_key "invoices", "customers"
   add_foreign_key "invoices", "veterinarians"
+  add_foreign_key "litter_treatment_types", "litters"
+  add_foreign_key "litter_treatment_types", "treatment_types"
+  add_foreign_key "litter_treatments", "litters"
+  add_foreign_key "litter_treatments", "treatment_types"
   add_foreign_key "litters", "breeds"
-  add_foreign_key "litters", "brokers"
   add_foreign_key "litters", "dams"
   add_foreign_key "litters", "sires"
   add_foreign_key "sales_people", "sales_plans"

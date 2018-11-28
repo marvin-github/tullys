@@ -13,11 +13,9 @@
       });
   });
 </script>
-
+<div class="container-fluid">
 <div style="background-color:lightgray">
-
-
-<%= form_with(model: invoice, local: true) do |form| %>
+<%= form_with(model: invoice, local: true, class: "input_form") do |form| %>
   <% if invoice.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(invoice.errors.count, "error") %> prohibited this invoice from being saved:</h2>
@@ -32,7 +30,7 @@
 
 
 
-  <div class="container-fluid">
+
 
     <br>
 
@@ -60,6 +58,7 @@
       </div>
       <div class="col-sm-2"></div>
     </div>
+
     <br><br>
 
 

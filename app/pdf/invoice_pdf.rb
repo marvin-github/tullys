@@ -33,7 +33,6 @@ class InvoicePdf < Prawn::Document
       payment_methods_h[p.id] = p.name
     end
 
-    puts i.pretty_print_inspect
     unless i.purchase_date.blank?
       @@purchase_date = i.purchase_date.strftime("%m/%d/%Y")
     end

@@ -16,6 +16,24 @@
 @import "bootstrap";
 @import "bootstrap-datepicker";
 
+.border_with_radius {
+  border-style: solid;
+  border-color: #E7E7E7;
+  border-radius: 10px;
+  border-width: 1px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.bordered_form {
+  @extend .border_with_radius;
+  background: lightgrey;
+}
+
+.input_form {
+  @extend .bordered_form;
+}
+
 
 hr {
   display: block;

@@ -89,11 +89,8 @@ class InvoicesController < ApplicationController
   end
 
   def get_price
-    #puts'*************'
-    puts params[:id]
     @canine = Canine.find(params[:id])
     @msg = { "success" => "true", "price" => @canine.price.to_s, :sale_discount => @canine.sale_price}
-    puts @canine.price
     respond_to do |format|
       format.html
       format.json { render json: @msg }

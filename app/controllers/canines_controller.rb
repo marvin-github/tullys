@@ -1,6 +1,6 @@
 class CaninesController < ApplicationController
   before_action :set_canine, only: [:show, :edit, :update, :destroy]
-
+  after_action :create_treatments, only: :create
   # GET /canines
   # GET /canines.json
   def index
@@ -15,7 +15,6 @@ class CaninesController < ApplicationController
   # GET /canines/new
   def new
     @canine = Canine.new
-    #@canine.canine_treatment_types.build
     @canine.treatments.build
   end
 
@@ -30,6 +29,9 @@ class CaninesController < ApplicationController
 
     respond_to do |format|
       if @canine.save
+
+
+
         format.html { redirect_to action: 'index', notice: 'Canine was successfully created.' }
         format.json { render :show, status: :created, location: @canine }
       else
@@ -39,9 +41,21 @@ class CaninesController < ApplicationController
     end
   end
 
+  def create_treatments
+
+    canine = Canine.last
+    litter_treatments = LitterTreatment.where("litter_id = ?", canine.litter_id)
+    litter_treatments.each do |l|
+      #@model.date_you_want = @model.date_you_want.strftime('%Y/%d/%m')
+      Treatment.create!(canine_id: canine.id, treatment_type_id: l.treatment_type_id, treatment_date: l.treatment_date )
+    end
+
+  end
+
   # PATCH/PUT /canines/1
   # PATCH/PUT /canines/1.json
   def update
+
     respond_to do |format|
       if @canine.update(canine_params)
         format.html { redirect_to action: 'index', notice: 'Canine was successfully updated.' }
@@ -77,6 +91,6 @@ class CaninesController < ApplicationController
                                      :fault_discount, :fault_discount, :registration_company_id,
                                      :on_hold, :on_hold_reason, :available_date, :last_sold_date,
                                      :cost, :sale_status_id, :description, :registration_number,
-                                     treatments_attributes:[:_destroy, :id, :canine_id, :treatment_type_id])
+                                     treatments_attributes:[:_destroy, :id, :canine_id, :treatment_type_id, :treatment_date])
     end
 end

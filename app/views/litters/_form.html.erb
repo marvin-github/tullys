@@ -52,7 +52,7 @@
 
         <div class="col-sm-4">
           <%= form.label :breeder_id %>
-          <%= form.collection_select(:breeder_id, Breeder.all, :id, :company_name, {:include_blank => true}, {:class => 'form-control'}) %>
+          <%= form.collection_select(:breeder_id, Breeder.all.order("last_name"), :id, :full_name, {:include_blank => true}, {:class => 'form-control'}) %>
         </div>
         <div class="col-sm-2"></div>
       </div><br>
@@ -94,7 +94,39 @@
         </div>
         <div class="col-sm-2"></div>
       </div><br>
+        <hr><br>
+        <h2 align="center"> Treatments</h2>
+        <br>
 
+      <%= form.nested_fields_for :litter_treatments do |ff| %>
+          <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4">
+              <br>
+              <!-- <%= ff.label :treatment_id, 'Treatments' %>-->
+              <%= ff.collection_select(:treatment_type_id,  TreatmentType.all, :id, :name, {:include_blank => true}, class: 'form-control') %>
+            </div>
+
+            <div class="col-sm-4">
+              <br>
+              <%= ff.text_field :treatment_date, id: :canine_treatment_date, data:{ provide:'datepicker', 'date-format' => 'mm-dd-yyyy' }, class: "form-control", placeholder: 'mm-dd-yyyy' %>
+            </div>
+
+            <div class="col-sm-1" >
+              <br>
+              <!--<%= ff.label :Action %>-->
+              <%= ff.remove_nested_fields_link 'Delete',  :class => "btn btn-danger"  %>
+            </div><br>
+      <% end %>
+
+      </div><br><br>
+      <div class="row">
+        <div class="col-sm-10"></div>
+        <div class="col-sm-1">
+          <%= form.add_nested_fields_link :litter_treatments, 'Add',  :class => "btn btn-success"  %>
+        </div>
+      </div>
+      <br><br><br>
       <div align="center">
         <div class="actions" >
           <%= form.submit :class => "btn btn-dark" %>

@@ -63,6 +63,38 @@
         </div>
         <div class="col-sm-2"></div>
       </div><br>
+
+    <div class="row" >
+      <div class="col-sm-2"></div>
+      <div class="col-sm-4">
+        <%= form.label :litter_id %>
+        <%= form.collection_select(:litter_id, Litter.all, :id, :name,  {:include_blank => true}, {:class => 'form-control'}) %>
+      </div>
+
+      <div class="col-sm-4">
+        <%= form.label :micro_chip_number %>
+        <%= form.text_field :micro_chip_number, id: :canine_micro_chip_number, class: "form-control" %>
+      </div>
+      <div class="col-sm-2"></div>
+    </div>
+    <br>
+
+
+
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-4">
+        <%= form.label :registration_company_id %>
+        <%= form.collection_select(:registration_company_id, RegistrationCompany.all, :id, :company_name,  {:include_blank => true}, {:class => 'form-control'}) %>
+      </div>
+
+      <div class="col-sm-4">
+        <%= form.label :registration_number %>
+        <%= form.text_field :registration_number, id: :canine_registration_number, class: "form-control" %>
+      </div>
+      <div class="col-sm-2"></div>
+    </div>
+    <br>
       <hr><br>
 
       <h2 align="center"> Price</h2>
@@ -89,37 +121,7 @@
       <br>
 
 
-      <div class="row" >
-        <div class="col-sm-2"></div>
-        <div class="col-sm-4">
-          <%= form.label :litter_id %>
-          <%= form.collection_select(:litter_id, Litter.all, :id, :name,  {:include_blank => true}, {:class => 'form-control'}) %>
-        </div>
 
-        <div class="col-sm-4">
-          <%= form.label :micro_chip_number %>
-          <%= form.text_field :micro_chip_number, id: :canine_micro_chip_number, class: "form-control" %>
-        </div>
-        <div class="col-sm-2"></div>
-      </div>
-      <br>
-
-
-
-      <div class="row">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-4">
-          <%= form.label :registration_company_id %>
-          <%= form.collection_select(:registration_company_id, RegistrationCompany.all, :id, :company_name,  {:include_blank => true}, {:class => 'form-control'}) %>
-        </div>
-
-        <div class="col-sm-4">
-          <%= form.label :registration_number %>
-          <%= form.text_field :registration_number, id: :canine_registration_number, class: "form-control" %>
-        </div>
-        <div class="col-sm-2"></div>
-      </div>
-      <br>
 
       <hr><br>
       <h2 align="center"> Status</h2>
@@ -167,19 +169,25 @@
     <div class="row">
       <div class="col-sm-2"></div>
       <div class="col-sm-4">
-        <%= ff.label :treatment_id, 'Treatments' %>
+        <br>
         <%= ff.collection_select(:treatment_type_id,  TreatmentType.all, :id, :name, {:include_blank => true}, class: 'form-control') %>
       </div>
 
+      <div class="col-sm-4">
+        <br>
+        <%= ff.text_field :treatment_date, id: :canine_treatment_date, data:{ provide:'datepicker', 'date-format' => 'yyyy-mm-dd' }, class: "form-control", placeholder: 'yyyy-mm-dd' %>
+      </div>
+
       <div class="col-sm-1" >
-        <%= ff.label :Action %>
+        <br>
+        <!--<%= ff.label :Action %>-->
         <%= ff.remove_nested_fields_link 'Delete',  :class => "btn btn-danger"  %>
       </div><br>
   <% end %>
 
     </div><br><br>
     <div class="row">
-      <div class="col-sm-6"></div>
+      <div class="col-sm-10"></div>
       <div class="col-sm-1">
         <%= form.add_nested_fields_link :treatments, 'Add',  :class => "btn btn-success"  %>
       </div>

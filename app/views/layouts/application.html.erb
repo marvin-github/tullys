@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Tullys</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +10,7 @@
 
 
   </head>
+  <div class="container-fluid">
   <%  cu = current_user  %>
   <% if cu && cu.access == 'admin' %>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -152,7 +154,7 @@
       </div>
     </nav>
     <% end %>
-
+  </div>
 
   <body>
     <%= yield %>

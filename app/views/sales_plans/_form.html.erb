@@ -1,4 +1,5 @@
 
+<div class="container-fluid">
 <div style="background-color:lightgray">
 <%= form_with(model: sales_plan, local: true) do |form| %>
   <% if sales_plan.errors.any? %>
@@ -14,7 +15,7 @@
   <% end %>
 
 
-  <div class="container-fluid"><br>
+
     <h2 align="center"> Sale Plan</h2><br>
     <div class="row" >
       <div class="col-sm-3"></div>
@@ -72,5 +73,6 @@
       </div>
     </div><br>
 <% end %>
+
 </div>
 </div>

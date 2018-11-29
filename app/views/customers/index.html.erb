@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Customers</h1>
+<br>
+<div align="left">
+  <%= link_to 'New Customer', new_customer_path, :class => "btn btn-dark" %>
+</div>
+<br>
 <div class="container-fluid">
 <table class="table table-striped">
   <thead>
@@ -34,9 +39,6 @@
 <br>
 
 
-  <div align="center">
-    <%= link_to 'New Customer', new_customer_path, :class => "btn btn-dark" %>
-  </div>
 
 
 </div>

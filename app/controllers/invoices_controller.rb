@@ -90,7 +90,11 @@ class InvoicesController < ApplicationController
 
   def get_price
     @canine = Canine.find(params[:id])
-    @msg = { "success" => "true", "price" => @canine.price.to_s, :sale_discount => @canine.sale_price}
+    @msg = { "success" => "true", "price" => @canine.price.to_s,
+             :sale_discount => @canine.sale_price,
+             "breeder" => @canine.litter.breeder.full_name,
+             "sire" => + @canine.litter.sire.name,
+             "dam" => @canine.litter.dam.name }
     respond_to do |format|
       format.html
       format.json { render json: @msg }

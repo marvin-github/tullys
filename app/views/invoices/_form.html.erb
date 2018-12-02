@@ -7,6 +7,9 @@
                 jQuery.getJSON('/invoices/get_price/' + state, function(data){
                   $("#invoice_sale_price").val(data.price);
                   $("#invoice_sale_discount").val(data.sale_discount);
+                  $("#dam").val(data.dam);
+                  $("#sire").val(data.sire);
+                  $("#breeder").val(data.breeder);
               });
               return false;
           });
@@ -26,18 +29,10 @@
       <% end %>
       </ul>
     </div>
-  <% end %>
-
-
-
-
-
-    <br>
-
-
+  <% end %>    <br>
 
     <!--*** PET INFO ***    -->
-
+    <div class="container-fluid">
     <h2 align="center"> Invoice </h2>
     <br>
 
@@ -48,8 +43,30 @@
         <%= form.select :canine_id, Canine.joins(litter: :dam).order(sale_status_id: :asc, micro_chip_number: :asc).collect {|c| [c.sale_status.name + ' | ' + c.micro_chip_number.last(5) + ' | ' + c.gender.code + ' | ' + c.litter.breed.name + ' | ' + c.color, c.id]}, {:include_blank => true}, {:class => 'form-control', :id => 'dog_id'} %>
       </div>
       <div class="col-sm-2"></div>
-    </div>
-    <br>
+    </div><br>
+
+    <div class="row" >
+      <div class="col-sm-2"></div>
+      <div class="col-sm-4">
+        <%= label_tag "Dam" %>
+        <%= text_field_tag "dam", nil, disabled: true, :class => 'form-control' %>
+      </div>
+      <div class="col-sm-4">
+        <%= label_tag "Sire" %>
+        <%= text_field_tag "sire", nil, disabled: true, :class => 'form-control' %>
+      </div>
+      <div class="col-sm-2"></div>
+    </div><br>
+
+    <div class="row" >
+      <div class="col-sm-2"></div>
+      <div class="col-sm-8">
+        <%= label_tag "Breeder" %>
+        <%= text_field_tag "breeder", nil, disabled: true, :class => 'form-control' %>
+      </div>
+      <div class="col-sm-2"></div>
+    </div><br>
+
     <div class="row" >
       <div class="col-sm-2"></div>
       <div class="col-sm-8">
@@ -244,5 +261,6 @@
     </div>
 
 <% end %>
+</div>
 </div>
 </div>

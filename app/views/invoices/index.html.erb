@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Invoices</h1>
+<div align="left">
+  <%= link_to 'New Invoice', new_invoice_path, :class => "btn btn-dark" %>
+</div>
 <div class="container-fluid">
 <table class="table table-striped">
   <thead>
@@ -32,7 +35,5 @@
 
 <br>
 
-  <div align="center">
-    <%= link_to 'New Invoice', new_invoice_path, :class => "btn btn-dark" %>
-  </div>
+
 </div>

@@ -1,3 +1,4 @@
+<div class="container-fluid">
 <div style="background-color:lightgray">
 <%= form_with(model: user, local: true) do |form| %>
   <% if user.errors.any? %>
@@ -11,7 +12,7 @@
       </ul>
     </div>
   <% end %>
-  <div class="container-fluid">
+
     <br>
     <h2 align="center"> User Info</h2>
     <br>

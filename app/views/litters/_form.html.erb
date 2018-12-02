@@ -30,12 +30,12 @@
         <div class="col-sm-2"></div>
         <div class="col-sm-4">
           <%= form.label :arrival_date %>
-          <%= form.text_field :arrival_date, id: :litter_arrival_date,  data: {provide: 'datepicker', 'date-format' => 'yyyy-mm-dd'}, class: 'form-control', placeholder: 'yyyy-mm-dd' %>
+          <%= form.text_field :arrival_date, id: :litter_arrival_date,  data: {provide: 'datepicker', 'date-format' => 'mm/dd/yyyy'}, class: 'form-control', placeholder: 'mm/dd/yyyy' %>
         </div>
 
         <div class="col-sm-4">
           <%= form.label :available_date %>
-          <%= form.text_field :available_date, id: :litter_available_date, data:{ provide:'datepicker', 'date-format' => 'yyyy-mm-dd' }, placeholder: 'yyyy-mm-dd', class: "form-control"  %>
+          <%= form.text_field :available_date, id: :litter_available_date, data:{ provide:'datepicker', 'date-format' => 'mm/dd/yyyy' }, placeholder: 'mm/dd/yyyy', class: "form-control"  %>
         </div>
 
 
@@ -48,7 +48,7 @@
         <div class="col-sm-2"></div>
         <div class="col-sm-4">
           <%= form.label :birth_date %>
-          <%= form.text_field :birth_date, id: :litter_birth_date, data:{ provide:'datepicker', 'date-format' => 'yyyy-mm-dd' }, class: "form-control", placeholder: 'yyyy-mm-dd' %>
+          <%= form.text_field :birth_date, id: :litter_birth_date, data:{ provide:'datepicker', 'date-format' => 'mm/dd/yyyy' }, class: "form-control", placeholder: 'mm/dd/yyyy' %>
         </div>
 
         <div class="col-sm-4">
@@ -110,7 +110,7 @@
 
             <div class="col-sm-4">
               <br>
-              <%= ff.text_field :treatment_date, id: :canine_treatment_date, data:{ provide:'datepicker', 'date-format' => 'mm-dd-yyyy' }, class: "form-control", placeholder: 'mm-dd-yyyy' %>
+              <%= ff.text_field :treatment_date, id: :canine_treatment_date, data:{ provide:'datepicker', 'date-format' => 'mm/dd/yyyy' }, class: "form-control", placeholder: 'mm/dd/yyyy' %>
             </div>
 
             <div class="col-sm-1" >
@@ -133,7 +133,7 @@
           <%= form.submit :class => "btn btn-dark" %>
         </div>
       </div><br>
-    </div>
+      </div>
   <% end %>
 </div>
 </div>

@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Breeds</h1>
+<h1>Breeds</h1><br>
+<div align="left">
+  <%= link_to 'New Breed', new_breed_path, :class => "btn btn-dark" %>
+</div>
+<br>
+
 <div class="container-fluid">
 <table class="table table-striped">
   <thead>
@@ -24,5 +29,5 @@
 
 <br>
 
-<%= link_to 'New Breed', new_breed_path, :class => "btn btn-dark" %>
+
 </div>

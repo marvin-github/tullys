@@ -26,9 +26,9 @@ class LittersController < ApplicationController
   # POST /litters.json
   def create
     @litter = Litter.new(litter_params)
-    @litter.litter_treatments.each do |t|
-      t.treatment_date = t.treatment_date.strftime('%Y-%d-%m')
-     end
+    # @litter.litter_treatments.each do |t|
+    #   t.treatment_date = t.treatment_date.strftime('%Y-%d-%m')
+    #  end
 
 
     respond_to do |format|
@@ -46,9 +46,9 @@ class LittersController < ApplicationController
   # PATCH/PUT /litters/1.json
   def update
 
-    params[:litter][:litter_treatments_attributes].values.each do |l|
-      l[:treatment_date] = Date.parse(l[:treatment_date]).strftime('%Y-%d-%m')
-    end
+    # params[:litter][:litter_treatments_attributes].values.each do |l|
+    #   l[:treatment_date] = Date.parse(l[:treatment_date]).strftime('%Y-%d-%m')
+    # end
     respond_to do |format|
       if @litter.update(litter_params)
         format.html { redirect_to @litter, notice: 'Litter was successfully updated.' }
@@ -74,8 +74,11 @@ class LittersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_litter
       @litter = Litter.find(params[:id])
+      @litter.birth_date =  @litter.birth_date.strftime('%m/%d/%Y')
+      @litter.arrival_date =  @litter.arrival_date.strftime('%m/%d/%Y')
+      @litter.available_date =  @litter.available_date.strftime('%m/%d/%Y')
       @litter.litter_treatments.each do |t|
-        t.treatment_date = t.treatment_date.strftime('%m-%d-%Y')
+        t.treatment_date = t.treatment_date.strftime('%m/%d/%Y') unless t.treatment_date.blank?
       end
 
     end

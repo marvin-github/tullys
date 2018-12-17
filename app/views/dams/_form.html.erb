@@ -39,11 +39,19 @@
 
           <div class="col-sm-4">
             <%= form.label :breeder_id %>
-            <%= form.collection_select(:breeder_id, Breeder.all, :id, :company_name,  {:include_blank => true}, {:class => 'form-control'}) %>
+            <%= form.collection_select(:breeder_id, Breeder.all.order("last_name"), :id, :full_name, {:include_blank => true}, {:class => 'form-control'}) %>
           </div>
         </div><br>
 
+        <div class="row" >
+          <div class="col-sm-2"></div>
+          <div class="col-sm-8">
+            <%= form.label :comment %>
+            <%= form.text_area :comment, id: :dam_comment, class: "form-control" %>
+            <div class="col-sm-2"></div>
+          </div>
 
+        </div><br>
 
         <div align="center">
           <div class="actions" >

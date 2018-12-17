@@ -4,8 +4,11 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
+    puts params[:last_name].inspect
     if !params[:phone].blank?
       @customers = Customer.where("home_phone = ? or mobile_phone = ?", params[:phone], params[:phone])
+    elsif !params[:last_name].blank?
+      @customers = Customer.where("last_name = ?", params[:last_name])
     else
       @customers = Customer.all.order(last_name: :asc)
     end

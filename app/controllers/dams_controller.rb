@@ -69,6 +69,6 @@ class DamsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dam_params
-      params.require(:dam).permit(:name, :breed_id, :breeder_id, :registration_number, :picture_id)
+      params.require(:dam).permit(:name, :breed_id, :breeder_id, :registration_number, :comment, :picture_id)
     end
 end

@@ -69,6 +69,6 @@ class SiresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sire_params
-      params.require(:sire).permit(:name, :breed_id, :breeder_id, :registration_number, :picture_id)
+      params.require(:sire).permit(:name, :breed_id, :breeder_id, :registration_number, :comment, :picture_id)
     end
 end

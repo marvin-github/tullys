@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181117220805) do
+ActiveRecord::Schema.define(version: 20181217011906) do
 
   create_table "breeders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "first_name"
@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(version: 20181117220805) do
     t.bigint "picture_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.binary "comment"
     t.index ["breed_id"], name: "index_dams_on_breed_id"
     t.index ["breeder_id"], name: "index_dams_on_breeder_id"
     t.index ["picture_id"], name: "index_dams_on_picture_id"
@@ -324,6 +325,7 @@ ActiveRecord::Schema.define(version: 20181117220805) do
     t.bigint "picture_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.binary "comment"
     t.index ["breed_id"], name: "index_sires_on_breed_id"
     t.index ["breeder_id"], name: "index_sires_on_breeder_id"
     t.index ["picture_id"], name: "index_sires_on_picture_id"

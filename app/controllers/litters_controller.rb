@@ -60,6 +60,23 @@ class LittersController < ApplicationController
     end
   end
 
+  def get_dams
+    @dams =[]
+    @dams = Dam.where('breeder_id = ?', params[:id].to_i )
+    respond_to do |format|
+      format.json { render json: {dams: @dams} }
+    end
+  end
+
+  def get_sires
+    @sires =[]
+    @sires = Sire.where('breeder_id = ?', params[:id].to_i)
+    respond_to do |format|
+      format.json { render json: {sires: @sires} }
+    end
+
+  end
+
   # DELETE /litters/1
   # DELETE /litters/1.json
   def destroy

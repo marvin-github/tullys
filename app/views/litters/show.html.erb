@@ -27,12 +27,12 @@
 
 <p>
   <strong>Dam:</strong>
-  <%= @litter.dam.name %>
+  <%= @litter.dam.try(:name)  %>
 </p>
 
 <p>
   <strong>Sire:</strong>
-  <%= @litter.sire.name %>
+  <%= @litter.sire.try(:name) %>
 </p>
 
 <p>

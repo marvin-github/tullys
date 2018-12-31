@@ -8,14 +8,14 @@
 <table class="table table-striped">
   <thead>
   <tr>
-      <th>Registration Number</th>
+      <th>Name</th>
   </tr>
   </thead>
 
   <tbody>
     <% @dams.each do |dam| %>
       <tr>
-        <td><%= dam.registration_number %></td>
+        <td><%= dam.name %></td>
         <td><%= link_to 'Show', dam, class: "btn btn-outline-dark btn-sm" %>
         <td><%= link_to 'Edit', edit_dam_path(dam), class: "btn btn-outline-dark btn-sm" %>
         <!--<td><%= link_to 'Destroy', dam, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->

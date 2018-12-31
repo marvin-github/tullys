@@ -1,18 +1,99 @@
 <script>
   $(document).ready(function() {
       jQuery(function($) {
-          $("#dog_id").change(function() {
-              var state = $('select#dog_id :selected').val();
-              if(state == "") state="0";
-                jQuery.getJSON('/invoices/get_price/' + state, function(data){
+          $("#breeder").change(function () {
+              var breeder_id = $('select#breeder :selected').val();
+              if (breeder_id == "") breeder_id = "0";
+              $.ajax({
+                  type: 'GET',
+                  url: '/invoices/get_dams/' + breeder_id,
+                  data: '',
+                  dataType: 'json',
+                  async: false,
+                  success: function(response){
+                      console.log (response);
+                      var dams = response["dams"];
+                      $("#dam").empty();
+                      $("#dam").append('<option>-- Select Dam --</option>');
+                      for (var i = 0; i < dams.length; i++){
+                          $("#dam").append("<option value='" +dams[i]["id"]+ "'>" +dams[i]["name"]+ '</option>');
+                      }
+                  }
+              });
+              $.ajax({
+                  type: 'GET',
+                  url: '/invoices/get_sires/' + breeder_id,
+                  data: '',
+                  dataType: 'json',
+                  async: false,
+                  success: function(response){
+                      var sires = response["sires"];
+                      $("#sire").empty();
+                      $("#sire").append('<option>-- Select Sire --</option>');
+                      for (var i = 0; i < sires.length; i++){
+                          $("#sire").append("<option value='" +sires[i]["id"]+ "'>" +sires[i]["name"]+ '</option>');
+                      }
+                  }
+              });
+
+          });
+          $("#dam").change(function () {
+              var dam_id = $('select#dam :selected').val();
+              if (dam_id == "") dam_id = "0";
+              $.ajax({
+                  type: 'GET',
+                  url: '/invoices/get_dam_canines/' + dam_id,
+                  data: '',
+                  dataType: 'json',
+                  async: false,
+                  success: function(response){
+                      console.log (response);
+                      var canines = response["canines"];
+                      console.log (canines);
+                      $("#canine").empty();
+                      $("#canine").append('<option>-- Select Canine --</option>');
+                      for (var i = 0; i < canines.length; i++){
+                          $("#canine").append("<option value='" + canines[i][1]+ "'>" + canines[i][0]+ '</option>');
+                      }
+                  }
+              });
+          });
+
+          $("#sire").change(function () {
+              var sire_id = $('select#sire :selected').val();
+              if (sire_id == "") sire_id = "0";
+              $.ajax({
+                  type: 'GET',
+                  url: '/invoices/get_sire_canines/' + sire_id,
+                  data: '',
+                  dataType: 'json',
+                  async: false,
+                  success: function(response){
+                      console.log (response);
+                      var canines = response["canines"];
+                      console.log (canines);
+                      $("#canine").empty();
+                      $("#canine").append('<option>-- Select Canine --</option>');
+                      for (var i = 0; i < canines.length; i++){
+                          $("#canine").append("<option value='" + canines[i][1]+ "'>" + canines[i][0]+ '</option>');
+                      }
+                  }
+              });
+          });
+
+          $("#canine").change(function() {
+              var canine_id = $('select#canine :selected').val();
+              if(canine_id == "") canine_id="0";
+              jQuery.getJSON('/invoices/get_price/' + canine_id, function(data){
                   $("#invoice_sale_price").val(data.price);
                   $("#invoice_sale_discount").val(data.sale_discount);
-                  $("#dam").val(data.dam);
-                  $("#sire").val(data.sire);
-                  $("#breeder").val(data.breeder);
+                  //$("#dam").val(data.dam);
+                  //$("#sire").val(data.sire);
+                  //$("#breeder").val(data.breeder);
               });
               return false;
           });
+
       });
   });
 </script>
@@ -39,8 +120,8 @@
     <div class="row" >
       <div class="col-sm-2"></div>
       <div class="col-sm-8">
-        <%= form.label :canine_id %>
-        <%= form.select :canine_id, Canine.joins(litter: :dam).order(sale_status_id: :asc, micro_chip_number: :asc).collect {|c| [c.sale_status.name + ' | ' + c.micro_chip_number.last(5) + ' | ' + c.gender.code + ' | ' + c.litter.breed.name + ' | ' + c.color, c.id]}, {:include_blank => true}, {:class => 'form-control', :id => 'dog_id'} %>
+        <%= label_tag "Breeder" %>
+        <%= form.collection_select(:breeder_id, Breeder.order(:last_name), :id, :full_name,  {:include_blank => true}, {:class => 'form-control', :id => 'breeder'}) %>
       </div>
       <div class="col-sm-2"></div>
     </div><br>
@@ -49,23 +130,29 @@
       <div class="col-sm-2"></div>
       <div class="col-sm-4">
         <%= label_tag "Dam" %>
-        <%= text_field_tag "dam", nil, disabled: true, :class => 'form-control' %>
+        <%= form.collection_select(:dam_id, Dam.order(:name), :id, :name,  {:include_blank => true}, {:class => 'form-control', :id => 'dam'}) %>
       </div>
       <div class="col-sm-4">
         <%= label_tag "Sire" %>
-        <%= text_field_tag "sire", nil, disabled: true, :class => 'form-control' %>
+        <%= form.collection_select(:sire_id, Sire.order(:name), :id, :name,  {:include_blank => true}, {:class => 'form-control', :id => 'sire'}) %>
       </div>
       <div class="col-sm-2"></div>
     </div><br>
 
-    <div class="row" >
+
+      <div class="row" >
       <div class="col-sm-2"></div>
       <div class="col-sm-8">
-        <%= label_tag "Breeder" %>
-        <%= text_field_tag "breeder", nil, disabled: true, :class => 'form-control' %>
+        <%= form.label :canine_id %>
+        <%= form.select :canine_id, Canine.joins(litter: :dam)
+            .order(sale_status_id: :asc, micro_chip_number: :asc)
+            .collect {|c| [c.sale_status.name + ' | ' + c.micro_chip_number.last(5) + ' | ' +
+            c.gender.code + ' | ' + c.litter.breed.name + ' | ' + c.color, c.id]},
+            {:include_blank => true}, {:class => 'form-control', :id => 'canine'} %>
       </div>
       <div class="col-sm-2"></div>
     </div><br>
+
 
     <div class="row" >
       <div class="col-sm-2"></div>

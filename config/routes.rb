@@ -23,6 +23,12 @@ Rails.application.routes.draw do
     end
   end
   get 'invoices/get_price/:id', to: 'invoices#get_price'
+  get 'invoices/get_dam_canines/:id', to: 'invoices#get_dam_canines'
+  get 'invoices/get_sire_canines/:id', to: 'invoices#get_sire_canines'
+  get 'invoices/get_dams/:id', to: 'invoices#get_dams'
+  get 'invoices/get_sires/:id', to: 'invoices#get_sires'
+  get 'litters/get_dams/:id', to: 'litters#get_dams'
+  get 'litters/get_sires/:id', to: 'litters#get_sires'
   resources :payment_methods
   resources :sales_people
   resources :sales_plans

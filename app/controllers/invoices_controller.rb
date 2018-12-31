@@ -17,6 +17,7 @@ class InvoicesController < ApplicationController
   # GET /invoices/new
   def new
     @invoice = Invoice.new
+
     if !params[:id].blank?
       @invoice.customer_id = params[:id]
     end
@@ -88,12 +89,58 @@ class InvoicesController < ApplicationController
     end
   end
 
+  def get_dam_canines
+    @canines =[]
+    @canines = Canine.joins(litter: :dam).where('dams.id = ?', params[:id].to_i )
+        .order(sale_status_id: :asc, micro_chip_number: :asc)
+        .collect {|c| [c.sale_status.name + ' | ' + c.micro_chip_number.last(5) + ' | ' +
+                           c.gender.code + ' | ' + c.litter.breed.name + ' | ' + c.color, c.id]}
+
+    respond_to do |format|
+      format.json { render json: {canines: @canines} }
+    end
+
+
+  end
+
+  def get_sire_canines
+    @canines =[]
+    @canines = Canine.joins(litter: :sire).where('sires.id = ?', params[:id].to_i )
+                   .order(sale_status_id: :asc, micro_chip_number: :asc)
+                   .collect {|c| [c.sale_status.name + ' | ' + c.micro_chip_number.last(5) + ' | ' +
+                                      c.gender.code + ' | ' + c.litter.breed.name + ' | ' + c.color, c.id]}
+
+    respond_to do |format|
+      format.json { render json: {canines: @canines} }
+    end
+
+
+  end
+
+  def get_dams
+    @dams =[]
+    @dams = Dam.where('breeder_id = ?', params[:id].to_i)
+    respond_to do |format|
+      format.json { render json: {dams: @dams} }
+    end
+
+  end
+
+  def get_sires
+    @sires =[]
+    @sires = Sire.where('breeder_id = ?', params[:id].to_i)
+    respond_to do |format|
+      format.json { render json: {sires: @sires} }
+    end
+
+  end
+
   def get_price
     @canine = Canine.find(params[:id])
     @msg = { "success" => "true", "price" => @canine.price.to_s,
              :sale_discount => @canine.sale_price,
              "breeder" => @canine.litter.breeder.full_name,
-             "sire" => + @canine.litter.sire.name,
+             "sire" =>  @canine.litter.sire.name,
              "dam" => @canine.litter.dam.name }
     respond_to do |format|
       format.html

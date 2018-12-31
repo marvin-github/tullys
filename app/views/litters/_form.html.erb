@@ -1,3 +1,47 @@
+<script>
+    $(document).ready(function() {
+        jQuery(function($) {
+            $("#breeder").change(function () {
+                var breeder_id = $('select#breeder :selected').val();
+                if (breeder_id == "") breeder_id = "0";
+                $.ajax({
+                    type: 'GET',
+                    url: '/invoices/get_dams/' + breeder_id,
+                    data: '',
+                    dataType: 'json',
+                    async: false,
+                    success: function(response){
+                        console.log (response);
+                        var dams = response["dams"];
+                        $("#dam").empty();
+                        $("#dam").append('<option>-- Select Dam --</option>');
+                        for (var i = 0; i < dams.length; i++){
+                            $("#dam").append("<option value='" +dams[i]["id"]+ "'>" +dams[i]["name"]+ '</option>');
+                        }
+                    }
+                });
+                $.ajax({
+                    type: 'GET',
+                    url: '/invoices/get_sires/' + breeder_id,
+                    data: '',
+                    dataType: 'json',
+                    async: false,
+                    success: function(response){
+                        var sires = response["sires"];
+                        $("#sire").empty();
+                        $("#sire").append('<option>-- Select Sire --</option>');
+                        for (var i = 0; i < sires.length; i++){
+                            $("#sire").append("<option value='" +sires[i]["id"]+ "'>" +sires[i]["name"]+ '</option>');
+                        }
+                    }
+                });
+
+            });
+
+        });
+    });
+</script>
+
 <div class="container-fluid">
 <div style="background-color:lightgray">
 <%= form_with(model: litter, local: true) do |form| %>
@@ -53,7 +97,7 @@
 
         <div class="col-sm-4">
           <%= form.label :breeder_id %>
-          <%= form.collection_select(:breeder_id, Breeder.all.order("last_name"), :id, :full_name, {:include_blank => true}, {:class => 'form-control'}) %>
+          <%= form.collection_select(:breeder_id, Breeder.all.order("last_name"), :id, :full_name, {:include_blank => true}, {:class => 'form-control', :id => 'breeder'}) %>
         </div>
         <div class="col-sm-2"></div>
       </div><br>
@@ -72,12 +116,12 @@
         <div class="col-sm-2"></div>
         <div class="col-sm-4">
           <%= form.label :dam_id %>
-          <%= form.collection_select(:dam_id, Dam.all, :id, :name, {:include_blank => true}, {:class => 'form-control'}) %>
+          <%= form.collection_select(:dam_id, Dam.all, :id, :name, {:include_blank => true}, {:class => 'form-control', :id => 'dam'}) %>
         </div>
 
         <div class="col-sm-4">
           <%= form.label :sire_id %>
-          <%= form.collection_select(:sire_id, Sire.all, :id, :name, {:include_blank => true}, {:class => 'form-control'}) %>
+          <%= form.collection_select(:sire_id, Sire.all, :id, :name, {:include_blank => true}, {:class => 'form-control', :id => 'sire'}) %>
         </div>
         <div class="col-sm-2"></div>
       </div><br>
